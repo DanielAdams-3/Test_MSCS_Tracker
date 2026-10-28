@@ -88,10 +88,10 @@ function subplanSelectedCount(state) {
 }
 
 function hasSubplan(state) {
-  return ((state.subplan !== GENERAL_TRACK));
+  return (state.subplan !== GENERAL_TRACK);
 }
 function hasPostFA27AIG(state) {
-  return state.subplan === AIG_POST_FA27;
+  return (state.subplan === AIG_POST_FA27);
 }
 
 function aigPostFA27CoreSelectedCount(state) {

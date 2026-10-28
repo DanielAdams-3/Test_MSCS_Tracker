@@ -249,6 +249,7 @@ const subplans = [
 
 
 const GENERAL_TRACK = subplans[0].value;
+const AIG_POST_FA27 = subplans[1].value;
 const SUBPLAN_COURSES_REQUIRED = 4;
 const AI_DEPTH_COURSES_REQUIRED = 2;
 const AI_CORE_COURSES_REQUIRED = 3;
