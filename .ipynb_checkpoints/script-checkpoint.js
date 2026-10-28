@@ -207,7 +207,7 @@ function subplanRows() {
     },
   ];
 };
-/*
+'''
 function aigPostFA27CoreSelectedCount(state) {
   return (state.aiCoreCourses || []).length;
 }
@@ -224,7 +224,7 @@ const AI_DEPTH_COURSES_REQUIRED = 2;
 const AI_CORE_COURSES_REQUIRED = 3;
 const AI_PROFDEV_COURSES_REQUIRED=3;
   ];
-*/
+'''
 
 function projectsRow(overrides = {}) {
   return Object.assign(
@@ -245,7 +245,7 @@ function projectsRow(overrides = {}) {
     },
     overrides
   );
-}
+};
 
 /* ---------- Track definitions ------------------------------------------ */
 

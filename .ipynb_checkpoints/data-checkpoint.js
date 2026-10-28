@@ -301,7 +301,7 @@ const aigPostFA27DepthOptions = [
     "CSCI 5214 Big Data Architecture",
     "CSCI 5254 Convex Optimization",
     "CSCI 5673 Distributed Systems",
-    "CSCI 5822 Probabilistic Models of Human and Machine Learning,
+    "CSCI 5822 Probabilistic Models of Human and Machine Learning",
     "CSCI 6414 Information Theory, Statistical Inference, and Experimental Design",
     "CSCI 6712 Data-Centric Computer Vision",
     "CSCI 7000 Special Topics [Neuro-Symbolic NLP]",
