@@ -62,6 +62,7 @@ const binCourses = {
 };
 
 // MSCPS subplans. Each needs four courses (12 credit hours) with a B or higher.
+// Note that this excludes the post-FA27 subplan which is handled separately.
 const subplans = [
   {
     value: "GENERAL TRACK (no subplan)",
@@ -97,146 +98,146 @@ const subplans = [
     value: "Algorithms, Network and Optimization (ANO)",
     label: "Algorithms, Network and Optimization (ANO)",
     courses: [
-      "CSCI 5114 - Practical Algorithmic Complexity",
-      "CSCI 5254 - Convex Optimization",
-      "CSCI 5352 - Network Analysis and Modeling",
-      "CSCI 5434 - Probability for Computer Science",
-      "CSCI 5444 - Theory of Computation",
-      "CSCI 5454 - Design and Analysis of Algorithms",
-      "CSCI 5654 - Linear Programming",
-      "CSCI 5676 - Numerical Optimization",
-      "CSCI 6114 - Computational Complexity Theory",
-      "CSCI 6214 - Randomized Algorithms",
-      "CSCI 6314 - Algorithmic Economics",
+      "CSCI 5114 Practical Algorithmic Complexity",
+      "CSCI 5254 Convex Optimization",
+      "CSCI 5352 Network Analysis and Modeling",
+      "CSCI 5434 Probability for Computer Science",
+      "CSCI 5444 Theory of Computation",
+      "CSCI 5454 Design and Analysis of Algorithms",
+      "CSCI 5654 Linear Programming",
+      "CSCI 5676 Numerical Optimization",
+      "CSCI 6114 Computational Complexity Theory",
+      "CSCI 6214 Randomized Algorithms",
+      "CSCI 6314 Algorithmic Economics",
     ],
   },
   {
     value: "Data Science & Engineering (DSE)",
     label: "Data Science & Engineering (DSE)",
     courses: [
-      "CSCI 5214 - Big Data Architecture",
-      "CSCI 5253 - Datacenter Scale Computing",
-      "CSCI 5254 - Convex Optimization",
-      "CSCI 5352 - Network Analysis and Modeling",
-      "CSCI 5434 - Probability for Computer Science",
-      "CSCI 5576 - High-Performance Scientific Computing",
-      "CSCI 5622 - Machine Learning",
-      "CSCI 5654 - Linear Programming",
-      "CSCI 5676 - Numerical Methods for Unconstrained Optimization",
-      "CSCI 5722 - Computer Vision",
-      "CSCI 5832 - Natural Language Processing",
-      "CSCI 5922 - Neural Networks and Deep Learning",
-      "CSCI 6502 - Big Data Analytics",
+      "CSCI 5214 Big Data Architecture",
+      "CSCI 5253 Datacenter Scale Computing",
+      "CSCI 5254 Convex Optimization",
+      "CSCI 5352 Network Analysis and Modeling",
+      "CSCI 5434 Probability for Computer Science",
+      "CSCI 5576 High-Performance Scientific Computing",
+      "CSCI 5622 Machine Learning",
+      "CSCI 5654 Linear Programming",
+      "CSCI 5676 Numerical Methods for Unconstrained Optimization",
+      "CSCI 5722 Computer Vision",
+      "CSCI 5832 Natural Language Processing",
+      "CSCI 5922 Neural Networks and Deep Learning",
+      "CSCI 6502 Big Data Analytics",
     ],
   },
   {
     value: "Human-Centered Computing (HCC)",
     label: "Human-Centered Computing (HCC)",
     courses: [
-      "CSCI 5229 - Computer Graphics",
-      "CSCI 5239 - Advanced Computer Graphics",
-      "CSCI 5322 - Algorithmic Human-Robot Interaction",
-      "CSCI 5402 - Research Methods in Human-Robot Interaction",
-      "CSCI 5616 - Intro to Mixed Reality",
-      "CSCI 5809 - Computer Animation",
-      "CSCI 5839 - User-Centered Design & Development 1",
-      "CSCI 5849 - Input Interaction and Accessibility",
-      "CSCI 5919 - HCI: Survey and Synthesis 1",
-      "CSCI 5929 - HCI: Survey and Synthesis 2",
-      "CSCI 6402 - Issues and Methods in Cognitive Science",
-      "CSCI 7000 - Special Topics [Information Visualization]",
-      "CSCI 7000 - Special Topics [Physical & Tangible Computing]",
-      "CSCI 7000 - Special Topics [Inclusive Design and Assistive Technology]",
-      "INFO 5501 - Open Collaboration",
-      "INFO 5502 - Online Communities",
-      "INFO 5601 - Information Ethics and Policy",
-      "INFO 5602 - Information Visualization",
-      "INFO 5606 - Ethnographic Research for Applied Settings",
-      "INFO 5609 - User-Centered Design",
-      "INFO 5611 - Ubiquitous Computing Experience Design",
+      "CSCI 5229 Computer Graphics",
+      "CSCI 5239 Advanced Computer Graphics",
+      "CSCI 5322 Algorithmic Human-Robot Interaction",
+      "CSCI 5402 Research Methods in Human-Robot Interaction",
+      "CSCI 5616 Intro to Mixed Reality",
+      "CSCI 5809 Computer Animation",
+      "CSCI 5839 User-Centered Design & Development 1",
+      "CSCI 5849 Input Interaction and Accessibility",
+      "CSCI 5919 HCI: Survey and Synthesis 1",
+      "CSCI 5929 HCI: Survey and Synthesis 2",
+      "CSCI 6402 Issues and Methods in Cognitive Science",
+      "CSCI 7000 Special Topics [Information Visualization]",
+      "CSCI 7000 Special Topics [Physical & Tangible Computing]",
+      "CSCI 7000 Special Topics [Inclusive Design and Assistive Technology]",
+      "INFO 5501 Open Collaboration",
+      "INFO 5502 Online Communities",
+      "INFO 5601 Information Ethics and Policy",
+      "INFO 5602 Information Visualization",
+      "INFO 5606 Ethnographic Research for Applied Settings",
+      "INFO 5609 User-Centered Design",
+      "INFO 5611 Ubiquitous Computing Experience Design",
     ],
   },
   {
     value: "Numerical Computation (NUM)",
     label: "Numerical Computation (NUM)",
     courses: [
-      "CSCI 5229 - Computer Graphics",
-      "CSCI 5239 - Advanced Computer Graphics",
-      "CSCI 5244 - Quantum Computation & Information",
-      "CSCI 5446 - Chaotic Dynamics",
-      "CSCI 5526 - Computational Tools for Multiscale Problems",
-      "CSCI 5576 - High-Performance Scientific Computing",
-      "CSCI 5606 - Principles of Numerical Computation",
-      "CSCI 5636 - Numerical Solution of Partial Differential Equations",
-      "CSCI 5646 - Numerical Linear Algebra",
-      "CSCI 5654 - Linear Programming",
-      "CSCI 5676 - Numerical Optimization",
+      "CSCI 5229 Computer Graphics",
+      "CSCI 5239 Advanced Computer Graphics",
+      "CSCI 5244 Quantum Computation & Information",
+      "CSCI 5446 Chaotic Dynamics",
+      "CSCI 5526 Computational Tools for Multiscale Problems",
+      "CSCI 5576 High-Performance Scientific Computing",
+      "CSCI 5606 Principles of Numerical Computation",
+      "CSCI 5636 Numerical Solution of Partial Differential Equations",
+      "CSCI 5646 Numerical Linear Algebra",
+      "CSCI 5654 Linear Programming",
+      "CSCI 5676 Numerical Optimization",
     ],
   },
   {
     value: "Robotics (RBT)",
     label: "Robotics (RBT)",
     courses: [
-      "CSCI 5202 - Intro to Robotics",
-      "CSCI 5254 - Convex Optimization",
-      "CSCI 5302 - Advanced Robotics",
-      "CSCI 5322 - Algorithmic Human-Robot Interaction",
-      "CSCI 5434 - Probability for Computer Science",
-      "CSCI 5622 - Machine Learning",
-      "CSCI 5722 - Computer Vision",
-      "CSCI 5854 - Theoretical Foundations of Autonomous Systems",
-      "CSCI 5922 - Neural Networks and Deep Learning",
-      "CSCI 5932 - Deep Reinforcement Learning",
-      "CSCI 5942 - AI Engineering",
-      "CSCI 7000 - Special Topics [Robot Perception]",
-      "CSCI 7000 - Special Topics [Physical Human Robot Interaction and Control]",
-      "ASEN 5347 - Math Methods in Dynamics",
-      "ASEN 6020 - Optimal Trajectories",
-      "ASEN 6412 - Uncertainty Quantification",
-      "ASEN 6519 - Special Topics [Algorithms for Aerospace Autonomy]",
+      "CSCI 5202 Intro to Robotics",
+      "CSCI 5254 Convex Optimization",
+      "CSCI 5302 Advanced Robotics",
+      "CSCI 5322 Algorithmic Human-Robot Interaction",
+      "CSCI 5434 Probability for Computer Science",
+      "CSCI 5622 Machine Learning",
+      "CSCI 5722 Computer Vision",
+      "CSCI 5854 Theoretical Foundations of Autonomous Systems",
+      "CSCI 5922 Neural Networks and Deep Learning",
+      "CSCI 5932 Deep Reinforcement Learning",
+      "CSCI 5942 AI Engineering",
+      "CSCI 7000 Special Topics [Robot Perception]",
+      "CSCI 7000 Special Topics [Physical Human Robot Interaction and Control]",
+      "ASEN 5347 Math Methods in Dynamics",
+      "ASEN 6020 Optimal Trajectories",
+      "ASEN 6412 Uncertainty Quantification",
+      "ASEN 6519 Special Topics [Algorithms for Aerospace Autonomy]",
     ],
   },
   {
     value: "Security (SEC)",
     label: "Security (SEC)",
     courses: [
-      "CSCI 5113 - Linux System Administration",
-      "CSCI 5160 - Introduction to Enterprise Networks",
-      "CSCI 5180 - Network Management & Automation",
-      "CSCI 5253 - Datacenter Scale Computing",
-      "CSCI 5273 - Network Systems",
-      "CSCI 5403 / CYBR 5300 - Cybersecurity",
-      "CSCI 5413 - Ethical Hacking",
-      "CSCI 5523 - Modern Offense and Defense in Cybersecurity",
-      "CSCI 7000 - Special Topics [Malware Reverse Engineering]",
-      "CYBR 5320 - Cybersecurity Network Analysis",
-      "CYBR 5330 - Digital Forensics",
-      "CYBR 5350 - Security Auditing and Penetration Testing",
-      "CYBR 5830 - Special Topics [Embedded Cybersecurity]",
-      "CYBR 5830 - Special Topics [Software Reverse Engineering]",
-      "ECEN 5133 - Fundamentals of Computer Security",
-      "ECEN 5793 - Secure Computer Architecture",
-      "MATH 5440 - Mathematics of Coding and Cryptography",
+      "CSCI 5113 Linux System Administration",
+      "CSCI 5160 Introduction to Enterprise Networks",
+      "CSCI 5180 Network Management & Automation",
+      "CSCI 5253 Datacenter Scale Computing",
+      "CSCI 5273 Network Systems",
+      "CSCI 5403 / CYBR 5300 Cybersecurity",
+      "CSCI 5413 Ethical Hacking",
+      "CSCI 5523 Modern Offense and Defense in Cybersecurity",
+      "CSCI 7000 Special Topics [Malware Reverse Engineering]",
+      "CYBR 5320 Cybersecurity Network Analysis",
+      "CYBR 5330 Digital Forensics",
+      "CYBR 5350 Security Auditing and Penetration Testing",
+      "CYBR 5830 Special Topics [Embedded Cybersecurity]",
+      "CYBR 5830 Special Topics [Software Reverse Engineering]",
+      "ECEN 5133 Fundamentals of Computer Security",
+      "ECEN 5793 Secure Computer Architecture",
+      "MATH 5440 Mathematics of Coding and Cryptography",
     ],
   },
   {
     value: "Software Systems & Cloud Computing (SSC)",
     label: "Software Systems & Cloud Computing (SSC)",
     courses: [
-      "CSCI 5135 - Computer-Aided Verification",
-      "CSCI 5253 - Datacenter Scale Computing",
-      "CSCI 5263 - Quantum Computer Architecture and Systems",
-      "CSCI 5273 - Network Systems",
-      "CSCI 5413 - Computer Security & Ethical Hacking",
-      "CSCI 5448 - Object-Oriented Analysis and Design",
-      "CSCI 5502 - Data Mining",
-      "CSCI 5525 - Compiler Construction",
-      "CSCI 5535 - Fundamental Concepts of Programming Languages",
-      "CSCI 5573 - Advanced Operating Systems",
-      "CSCI 5673 - Distributed Systems",
-      "CSCI 5817 - Database Systems",
-      "CSCI 5828 - Foundations of Software Engineering",
-      "CSCI 5848 - Agentic Software Engineering",
+      "CSCI 5135 Computer-Aided Verification",
+      "CSCI 5253 Datacenter Scale Computing",
+      "CSCI 5263 Quantum Computer Architecture and Systems",
+      "CSCI 5273 Network Systems",
+      "CSCI 5413 Computer Security & Ethical Hacking",
+      "CSCI 5448 Object-Oriented Analysis and Design",
+      "CSCI 5502 Data Mining",
+      "CSCI 5525 Compiler Construction",
+      "CSCI 5535 Fundamental Concepts of Programming Languages",
+      "CSCI 5573 Advanced Operating Systems",
+      "CSCI 5673 Distributed Systems",
+      "CSCI 5817 Database Systems",
+      "CSCI 5828 Foundations of Software Engineering",
+      "CSCI 5848 Agentic Software Engineering",
     ],
   },
 ];
@@ -244,6 +245,9 @@ const subplans = [
 
 const GENERAL_TRACK = subplans[0].value;
 const SUBPLAN_COURSES_REQUIRED = 4;
+const AI_DEPTH_COURSES_REQUIRED = 2;
+const AI_CORE_COURSES_REQUIRED = 3;
+const AI_PROFDEV_COURSES_REQUIRED=3;
 
 // MSCPS Projects (capstone) sequences.
 const projectsOptions = [
@@ -267,7 +271,7 @@ const bamUndergradProjects = [
 
 const bamCreditOptions = [
   "0 courses (0 hrs)",
-  "1 course (3-4 hrs)",
+  "1 course  (3-4 hrs)",
   "2 courses (6-7 hrs)",
   "3 courses (9-10 hrs)",
   "4 courses (max 12/13 hrs)",
@@ -282,6 +286,48 @@ const nonPhdCreditOptions = [
 const emenChoiceOptions = [
   "EMEN 5030 Project Management",
   "EMEN 5405 Fundamentals of Systems Engineering",
+];
+
+const aigPostFA27DepthOptions = [
+    "CSCI 5202 Introduction to Robotics"
+    "CSCI 5302 Advanced Robotics"
+    "CSCI 5322 Algorithmic Human-Robot Interaction"
+    "CSCI 5352 Network Analysis and Modeling"
+    "CSCI 5434 Probability for Computer Science"
+    "CSCI 5502 Data Mining"
+    "CSCI 5722 Computer Vision"
+    "CSCI 5832 Natural Language Processing"
+    "CSCI 5932 Deep Reinforcement Learning"
+    "CSCI 5214 Big Data Architecture"
+    "CSCI 5254 Convex Optimization"
+    "CSCI 5673 Distributed Systems"
+    "CSCI 5822 Probabilistic Models of Human and Machine Learning
+    "CSCI 6414 Information Theory, Statistical Inference, and Experimental Design"
+    "CSCI 6712 Data-Centric Computer Vision"
+    "CSCI 7000 Special Topics [Neuro-Symbolic NLP]"
+    "CSCI 7000 Special Topics [NLP for Cultural Analytics]"
+    "CSCI 7000 Special Topics [Deep Language Understanding]"
+    "CSCI 7000 Special Topics [Systems for Machine Learning]"
+    "CSCI 7000 Special Topics [Geospatial and Statistical Machine Learning]"
+    "CSCI 7000 Special Topics [Vision Language Models for Robotics]"
+    "CSCI 7000 Special Topics [Physical Human-Robot Interaction]"
+    "CSCI 7314 Seminar on Algorithmic Economics and Machine Learning"
+    "APPM 5490 Theory of Machine Learning"
+    "APPM 5720 Open Topics [Convex Optimization]"
+    "ECEN 5672 Digital Image Processing"
+    "ECEN 5772 Digital Video"
+];
+
+const aigPostFA27CoreOptions = [
+  "CSCI 5622 Machine Learning",
+  "CSCI 5922 Neural Nets & Deep Learning",
+  "CSCI 5942 AI Engineering",
+];
+
+const aigPostFA27ProfDevOptions = [
+  "CSCI 5011 AI Professional Skills",
+  "CSCI 5012 AI Toolkits",
+  "CSCI 5013 AI Ethics",
 ];
 
 const paceOptions = ["Full-time", "Part-time"];

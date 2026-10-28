@@ -88,7 +88,22 @@ function subplanSelectedCount(state) {
 }
 
 function hasSubplan(state) {
-  return state.subplan !== GENERAL_TRACK;
+  return ((state.subplan !== GENERAL_TRACK)&& (state.subplan !== AIG_POST_FA27));
+}
+function hasPostFA27AIG(state) {
+  return state.subplan === AIG_POST_FA27;
+}
+
+function aigPostFA27CoreSelectedCount(state) {
+  return (state.aiCoreCourses || []).length;
+}
+
+function aigPostFA27DepthSelectedCount(state) {
+  return (state.aiDepthCourses || []).length;
+}
+
+function aigPostFA27ProfDevSelectedCount(state) {
+  return (state.aiProfDevCourses || []).length;
 }
 
 function projectsWaived(state) {
@@ -121,6 +136,7 @@ function binRows() {
     {
       key: "bin2",
       label: "Breadth — BIN 2 (3 cr)",
+      visible: !(hasPostFA27AIG),
       requirement: BIN_NOTE,
       input: { type: "select", options: binCourses.bin2, placeholder: "Select a BIN 2 course" },
       credits: (state) => (state.bin2 ? 3 : 0),
@@ -150,7 +166,7 @@ function subplanRows() {
       label: "Subplan courses completed (4 courses / 12 cr)",
       requirement:
         "Select every subplan course you have finished with a B or higher. A grade of C, C+, or B- cannot count toward the subplan. Subplan courses may double-count toward your BIN and Elective requirements.",
-      visible: hasSubplan,
+      visible: hasSubplan && !(AIPostFA27Subplan),
       input: { type: "multiselect", optionsFor: subplanCourses, goal: SUBPLAN_COURSES_REQUIRED },
       status: (state) => countStatus(subplanSelectedCount(state), SUBPLAN_COURSES_REQUIRED),
     },
@@ -158,7 +174,7 @@ function subplanRows() {
       key: "subplanRemaining",
       label: "Subplan courses remaining",
       requirement: "Four subplan courses are required to have the specialization posted to your transcript.",
-      visible: hasSubplan,
+      visible: hasSubplan && noAIPostFA27Subplan,
       input: {
         type: "readout",
         valueFor: (state) =>
@@ -167,8 +183,47 @@ function subplanRows() {
       status: (state) =>
         subplanSelectedCount(state) >= SUBPLAN_COURSES_REQUIRED ? "Completed" : "Incomplete",
     },
-  ];
+    {
+      key: "aigPostFA27CoreCourses",
+      label: "AI Core courses completed (3 courses / 9 cr)",
+      requirement:
+        "Select every AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed.",
+      visible: hasSubplan && AIPostFA27Subplan,
+      input: { type: "multiselect", optionsFor: aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
+      status: (state) => countStatus(aigPostFA27CoreSelectedCount(state), AI_CORE_COURSES_REQUIRED),
+    },
+    {
+      key: "aiPostFA27CoreRemaining",
+      label: "AI Core courses remaining",
+      requirement: "Three AI Core courses are required to complete this part of the AI Specialization.",
+      visible: hasSubplan && AIPostFA27Subplan,
+      input: {
+        type: "readout",
+        valueFor: (state) =>
+          `${Math.max(0, AI_Core_Courses_Required - aigPostFA27CoreSelectedCount(state))} remaining`,
+      },
+      status: (state) =>
+        aigPostFA27CoreSelectedCount(state) >= AI_CORE_COURSES_REQUIRED ? "Completed" : "Incomplete",
+    },
+
+/*
+function aigPostFA27CoreSelectedCount(state) {
+  return (state.aiCoreCourses || []).length;
 }
+
+function aigPostFA27DepthSelectedCount(state) {
+  return (state.aiDepthCourses || []).length;
+}
+
+function aigPostFA27ProfDevSelectedCount(state) {
+  return (state.aiProfDevCourses || []).length;
+}
+
+const AI_DEPTH_COURSES_REQUIRED = 2;
+const AI_CORE_COURSES_REQUIRED = 3;
+const AI_PROFDEV_COURSES_REQUIRED=3;
+  ];
+*/
 
 function projectsRow(overrides = {}) {
   return Object.assign(
@@ -522,7 +577,7 @@ const tracks = [
     advisor: { name: "Daniel", url: links.advisor },
     state: {
       subplan: GENERAL_TRACK,
-      entryTerm: "Fall 2025",
+      entryTerm: "Fall 2026",
       currentTerm: "Fall 2026",
       bin1: "",
       bin2: "",
@@ -532,6 +587,7 @@ const tracks = [
       extraElectives: 0,
       subplanDeclared: false,
       subplanCourses: [],
+      hasPostFA27AIG: false,
     },
     plan: [
       {
@@ -657,6 +713,7 @@ const tracks = [
       extraElectives: 0,
       subplanDeclared: false,
       subplanCourses: [],
+      hasPostFA27AIG: false,
     },
     plan: [
       {
@@ -869,6 +926,7 @@ const tracks = [
       emenElectives: 0,
       subplanDeclared: false,
       subplanCourses: [],
+      hasPostFA27AIG: false,
     },
     plan: [
       {
