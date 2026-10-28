@@ -166,7 +166,7 @@ function subplanRows() {
       label: "Subplan courses completed (4 courses / 12 cr)",
       requirement:
         "Select every subplan course you have finished with a B or higher. A grade of C, C+, or B- cannot count toward the subplan. Subplan courses may double-count toward your BIN and Elective requirements.",
-      visible: hasSubplan && !(AIPostFA27Subplan),
+      visible: hasSubplan && !(hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: subplanCourses, goal: SUBPLAN_COURSES_REQUIRED },
       status: (state) => countStatus(subplanSelectedCount(state), SUBPLAN_COURSES_REQUIRED),
     },
@@ -174,7 +174,7 @@ function subplanRows() {
       key: "subplanRemaining",
       label: "Subplan courses remaining",
       requirement: "Four subplan courses are required to have the specialization posted to your transcript.",
-      visible: hasSubplan && noAIPostFA27Subplan,
+      visible: hasSubplan && !(hasPostFA27AIG),
       input: {
         type: "readout",
         valueFor: (state) =>
@@ -188,7 +188,7 @@ function subplanRows() {
       label: "AI Core courses completed (3 courses / 9 cr)",
       requirement:
         "Select every AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed.",
-      visible: hasSubplan && AIPostFA27Subplan,
+      visible: hasSubplan && hasPostFA27AIG,
       input: { type: "multiselect", optionsFor: aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27CoreSelectedCount(state), AI_CORE_COURSES_REQUIRED),
     },
@@ -196,7 +196,7 @@ function subplanRows() {
       key: "aiPostFA27CoreRemaining",
       label: "AI Core courses remaining",
       requirement: "Three AI Core courses are required to complete this part of the AI Specialization.",
-      visible: hasSubplan && AIPostFA27Subplan,
+      visible: hasSubplan && hasPostFA27AIG,
       input: {
         type: "readout",
         valueFor: (state) =>
@@ -207,25 +207,6 @@ function subplanRows() {
     },
   ];
 }
-
-/*
-function aigPostFA27CoreSelectedCount(state) {
-  return (state.aiCoreCourses || []).length;
-}
-
-function aigPostFA27DepthSelectedCount(state) {
-  return (state.aiDepthCourses || []).length;
-}
-
-function aigPostFA27ProfDevSelectedCount(state) {
-  return (state.aiProfDevCourses || []).length;
-}
-
-const AI_DEPTH_COURSES_REQUIRED = 2;
-const AI_CORE_COURSES_REQUIRED = 3;
-const AI_PROFDEV_COURSES_REQUIRED=3;
-  ];
-*/
 
 function projectsRow(overrides = {}) {
   return Object.assign(
