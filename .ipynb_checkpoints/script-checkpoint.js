@@ -159,7 +159,7 @@ function subplanRows() {
       label: "Subplan officially declared",
       requirement:
         "Subplans are never added automatically. Submit the MS Degree Change Request to add, swap, or remove a subplan, then verify it in the degree audit tool.",
-      visible: (hasSubplan || hasPostFA27AIG),
+      visible: hasSubplan,
       input: { type: "checkbox" },
     },
     {
@@ -183,6 +183,17 @@ function subplanRows() {
       },
       status: (state) =>
         subplanSelectedCount(state) >= SUBPLAN_COURSES_REQUIRED ? "Completed" : "Incomplete",
+    },
+}
+
+function aigPostFall2027Rows() {
+    {
+      key: "subplanDeclared",
+      label: "Subplan officially declared",
+      requirement:
+        "Subplans are never added automatically. Submit the MS Degree Change Request to add, swap, or remove a subplan, then verify it in the degree audit tool.",
+      visible: hasPostFA27AIG,
+      input: { type: "checkbox" },
     },
     {
       key: "aigPostFA27CoreCourses",
@@ -616,6 +627,7 @@ const tracks = [
         ],
       },
       { title: "Subplan Requirements", visible: hasSubplan, rows: subplanRows() },
+      { title: "function aigPostFall2027Rows() ", visible: hasAIGPostFA27, rows: aigPostFall2027Rows() },
     ],
     breakdown(state) {
       const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
