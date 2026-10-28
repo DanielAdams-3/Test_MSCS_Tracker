@@ -70,7 +70,12 @@ const subplans = [
     courses: [],
   },
   {
-    value: "Artificial Intelligence (AIG)",
+    value: "AIG_POST_FA27",
+    label: "Artificial Intelligence (AIG) post-Fall 2027",
+    courses: [],
+  },
+  {
+    value: "Artificial Intelligence (AIG) pre-Fall 2027",
     label: "Artificial Intelligence (AIG) pre-Fall 2027",
     courses: [
       "CSCI 5202 - Intro to Robotics",
