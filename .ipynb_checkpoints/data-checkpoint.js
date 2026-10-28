@@ -62,7 +62,7 @@ const binCourses = {
 };
 
 // MSCPS subplans. Each needs four courses (12 credit hours) with a B or higher.
-// Note that this excludes the post-FA27 subplan which is handled separately.
+// Note that this excludes the post-FA27 AIG subplan which is handled differently.
 const subplans = [
   {
     value: "GENERAL TRACK (no subplan)",
