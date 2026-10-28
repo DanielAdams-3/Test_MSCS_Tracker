@@ -206,7 +206,26 @@ function subplanRows() {
         aigPostFA27CoreSelectedCount(state) >= AI_CORE_COURSES_REQUIRED ? "Completed" : "Incomplete",
     },
   ];
-};
+}
+
+/*
+function aigPostFA27CoreSelectedCount(state) {
+  return (state.aiCoreCourses || []).length;
+}
+
+function aigPostFA27DepthSelectedCount(state) {
+  return (state.aiDepthCourses || []).length;
+}
+
+function aigPostFA27ProfDevSelectedCount(state) {
+  return (state.aiProfDevCourses || []).length;
+}
+
+const AI_DEPTH_COURSES_REQUIRED = 2;
+const AI_CORE_COURSES_REQUIRED = 3;
+const AI_PROFDEV_COURSES_REQUIRED=3;
+  ];
+*/
 
 function projectsRow(overrides = {}) {
   return Object.assign(
