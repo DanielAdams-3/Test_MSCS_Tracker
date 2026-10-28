@@ -88,8 +88,9 @@ function subplanSelectedCount(state) {
 }
 
 function hasSubplan(state) {
-  return (state.subplan !== GENERAL_TRACK);
+  return ((state.subplan !== GENERAL_TRACK) && (state.subplan !== AIG_POST_FA27));
 }
+
 function hasPostFA27AIG(state) {
   return (state.subplan === AIG_POST_FA27);
 }
@@ -158,7 +159,7 @@ function subplanRows() {
       label: "Subplan officially declared",
       requirement:
         "Subplans are never added automatically. Submit the MS Degree Change Request to add, swap, or remove a subplan, then verify it in the degree audit tool.",
-      visible: hasSubplan,
+      visible: (hasSubplan || hasPostFA27AIG),
       input: { type: "checkbox" },
     },
     {
@@ -166,7 +167,7 @@ function subplanRows() {
       label: "Subplan courses completed (4 courses / 12 cr)",
       requirement:
         "Select every subplan course you have finished with a B or higher. A grade of C, C+, or B- cannot count toward the subplan. Subplan courses may double-count toward your BIN and Elective requirements.",
-      visible: hasSubplan && !(hasPostFA27AIG),
+      visible: hasSubplan,
       input: { type: "multiselect", optionsFor: subplanCourses, goal: SUBPLAN_COURSES_REQUIRED },
       status: (state) => countStatus(subplanSelectedCount(state), SUBPLAN_COURSES_REQUIRED),
     },
@@ -174,7 +175,7 @@ function subplanRows() {
       key: "subplanRemaining",
       label: "Subplan courses remaining",
       requirement: "Four subplan courses are required to have the specialization posted to your transcript.",
-      visible: hasSubplan && !(hasPostFA27AIG),
+      visible: hasSubplan,
       input: {
         type: "readout",
         valueFor: (state) =>
@@ -188,7 +189,7 @@ function subplanRows() {
       label: "AI Core courses completed (3 courses / 9 cr)",
       requirement:
         "Select every AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed.",
-      visible: hasSubplan && hasPostFA27AIG,
+      visible: hasPostFA27AIG,
       input: { type: "multiselect", optionsFor: aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27CoreSelectedCount(state), AI_CORE_COURSES_REQUIRED),
     },
@@ -196,7 +197,7 @@ function subplanRows() {
       key: "aiPostFA27CoreRemaining",
       label: "AI Core courses remaining",
       requirement: "Three AI Core courses are required to complete this part of the AI Specialization.",
-      visible: hasSubplan && hasPostFA27AIG,
+      visible: hasPostFA27AIG,
       input: {
         type: "readout",
         valueFor: (state) =>
