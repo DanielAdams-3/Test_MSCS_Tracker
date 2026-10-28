@@ -289,33 +289,33 @@ const emenChoiceOptions = [
 ];
 
 const aigPostFA27DepthOptions = [
-    "CSCI 5202 Introduction to Robotics"
-    "CSCI 5302 Advanced Robotics"
-    "CSCI 5322 Algorithmic Human-Robot Interaction"
-    "CSCI 5352 Network Analysis and Modeling"
-    "CSCI 5434 Probability for Computer Science"
-    "CSCI 5502 Data Mining"
-    "CSCI 5722 Computer Vision"
-    "CSCI 5832 Natural Language Processing"
-    "CSCI 5932 Deep Reinforcement Learning"
-    "CSCI 5214 Big Data Architecture"
-    "CSCI 5254 Convex Optimization"
-    "CSCI 5673 Distributed Systems"
-    "CSCI 5822 Probabilistic Models of Human and Machine Learning
-    "CSCI 6414 Information Theory, Statistical Inference, and Experimental Design"
-    "CSCI 6712 Data-Centric Computer Vision"
-    "CSCI 7000 Special Topics [Neuro-Symbolic NLP]"
-    "CSCI 7000 Special Topics [NLP for Cultural Analytics]"
-    "CSCI 7000 Special Topics [Deep Language Understanding]"
-    "CSCI 7000 Special Topics [Systems for Machine Learning]"
-    "CSCI 7000 Special Topics [Geospatial and Statistical Machine Learning]"
-    "CSCI 7000 Special Topics [Vision Language Models for Robotics]"
-    "CSCI 7000 Special Topics [Physical Human-Robot Interaction]"
-    "CSCI 7314 Seminar on Algorithmic Economics and Machine Learning"
-    "APPM 5490 Theory of Machine Learning"
-    "APPM 5720 Open Topics [Convex Optimization]"
-    "ECEN 5672 Digital Image Processing"
-    "ECEN 5772 Digital Video"
+    "CSCI 5202 Introduction to Robotics",
+    "CSCI 5302 Advanced Robotics",
+    "CSCI 5322 Algorithmic Human-Robot Interaction",
+    "CSCI 5352 Network Analysis and Modeling",
+    "CSCI 5434 Probability for Computer Science",
+    "CSCI 5502 Data Mining",
+    "CSCI 5722 Computer Vision",
+    "CSCI 5832 Natural Language Processing",
+    "CSCI 5932 Deep Reinforcement Learning",
+    "CSCI 5214 Big Data Architecture",
+    "CSCI 5254 Convex Optimization",
+    "CSCI 5673 Distributed Systems",
+    "CSCI 5822 Probabilistic Models of Human and Machine Learning,
+    "CSCI 6414 Information Theory, Statistical Inference, and Experimental Design",
+    "CSCI 6712 Data-Centric Computer Vision",
+    "CSCI 7000 Special Topics [Neuro-Symbolic NLP]",
+    "CSCI 7000 Special Topics [NLP for Cultural Analytics]",
+    "CSCI 7000 Special Topics [Deep Language Understanding]",
+    "CSCI 7000 Special Topics [Systems for Machine Learning]",
+    "CSCI 7000 Special Topics [Geospatial and Statistical Machine Learning]",
+    "CSCI 7000 Special Topics [Vision Language Models for Robotics]",
+    "CSCI 7000 Special Topics [Physical Human-Robot Interaction]",
+    "CSCI 7314 Seminar on Algorithmic Economics and Machine Learning",
+    "APPM 5490 Theory of Machine Learning",
+    "APPM 5720 Open Topics [Convex Optimization]",
+    "ECEN 5672 Digital Image Processing",
+    "ECEN 5772 Digital Video",
 ];
 
 const aigPostFA27CoreOptions = [

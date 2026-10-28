@@ -205,7 +205,8 @@ function subplanRows() {
       status: (state) =>
         aigPostFA27CoreSelectedCount(state) >= AI_CORE_COURSES_REQUIRED ? "Completed" : "Incomplete",
     },
-
+  ];
+};
 /*
 function aigPostFA27CoreSelectedCount(state) {
   return (state.aiCoreCourses || []).length;
