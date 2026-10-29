@@ -188,6 +188,7 @@ function subplanRows() {
 }
 
 function aigPostFall2027Rows() {
+    return [
     {
       key: "subplanDeclared",
       label: "Subplan officially declared",
