@@ -585,6 +585,9 @@ const tracks = [
       subplanDeclared: false,
       subplanCourses: [],
       hasPostFA27AIG: false,
+      aigPostFA27CoreOptions: [],
+      aigPostFA27DepthOptions: [],
+      aigPostFA27ProfDevOptions: [],
     },
     plan: [
       {
@@ -712,6 +715,9 @@ const tracks = [
       subplanDeclared: false,
       subplanCourses: [],
       hasPostFA27AIG: false,
+      aigPostFA27CoreOptions: [],
+      aigPostFA27DepthOptions: [],
+      aigPostFA27ProfDevOptions: [],
     },
     plan: [
       {
@@ -925,6 +931,9 @@ const tracks = [
       subplanDeclared: false,
       subplanCourses: [],
       hasPostFA27AIG: false,
+      aigPostFA27CoreOptions: [],
+      aigPostFA27DepthOptions: [],
+      aigPostFA27ProfDevOptions: [],
     },
     plan: [
       {
@@ -1145,6 +1154,10 @@ const tracks = [
       extraElectives: 0,
       subplanDeclared: false,
       subplanCourses: [],
+      hasPostFA27AIG: false,
+      aigPostFA27CoreOptions: [],
+      aigPostFA27DepthOptions: [],
+      aigPostFA27ProfDevOptions: [],
     },
     plan: [
       {
