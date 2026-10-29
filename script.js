@@ -629,7 +629,7 @@ const tracks = [
         ],
       },
       { title: "Subplan Requirements", visible: hasSubplan, rows: subplanRows() },
-      { title: "function aigPostFall2027Rows() ", visible: hasAIGPostFA27, rows: aigPostFall2027Rows() },
+      { title: "Subplan Requirements", visible: hasAIGPostFA27, rows: aigPostFall2027Rows() },
     ],
     breakdown(state) {
       const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
