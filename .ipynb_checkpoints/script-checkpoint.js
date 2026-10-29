@@ -184,6 +184,7 @@ function subplanRows() {
       status: (state) =>
         subplanSelectedCount(state) >= SUBPLAN_COURSES_REQUIRED ? "Completed" : "Incomplete",
     },
+  ];
 }
 
 function aigPostFall2027Rows() {
