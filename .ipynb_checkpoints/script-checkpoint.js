@@ -190,8 +190,8 @@ function subplanRows() {
 function aigPostFall2027Rows() {
     return [
     {
-      key: "subplanDeclared",
-      label: "Subplan officially declared",
+      key: "hasPostFA27AIG",
+      label: "AI Subplan declared",
       requirement:
         "Subplans are never added automatically. Submit the MS Degree Change Request to add, swap, or remove a subplan, then verify it in the degree audit tool.",
       visible: hasPostFA27AIG,
