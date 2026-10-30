@@ -215,7 +215,7 @@ function subplanRows() {
       input: {
         type: "readout",
         valueFor: (state) =>
-          `${Math.max(0, AI_Core_Courses_Required - aigPostFA27CoreSelectedCount(state))} remaining`,
+          `${Math.max(0, AI_CORE_COURSES_REQUIRED - aigPostFA27CoreSelectedCount(state))} remaining`,
       },
       status: (state) =>
         aigPostFA27CoreSelectedCount(state) >= AI_CORE_COURSES_REQUIRED ? "Completed" : "Incomplete",
@@ -629,7 +629,6 @@ const tracks = [
       extraElectives: 0,
       subplanDeclared: false,
       subplanCourses: [],
-      subplanType: false,
       hasPostFA27AIG: false,
       aigPostFA27CoreOptions: [],
       aigPostFA27DepthOptions: [],
