@@ -88,11 +88,11 @@ function subplanSelectedCount(state) {
 }
 
 function hasSubplan(state) {
-  return ((state.subplan !== GENERAL_TRACK) && (state.hasPostFA27AIG !== AIG_POST_FA27));
+  return Boolean((state.subplan !== GENERAL_TRACK) && (state.hasPostFA27AIG));
 }
 
 function hasPostFA27AIG(state) {
-  return (state.subplan === AIG_POST_FA27);
+  return Boolean(state.subplan !== AIG_POST_FA27);
 }
 
 function aigPostFA27CoreOptions(state) {
@@ -642,6 +642,7 @@ const tracks = [
       extraElectives: 0,
       subplanDeclared: false,
       subplanCourses: [],
+      subplanType: false,
       hasPostFA27AIG: false,
       aigPostFA27CoreOptions: [],
       aigPostFA27DepthOptions: [],
@@ -1534,6 +1535,8 @@ function renderNumber(trackId, key, value, max, caption, label) {
   `;
 }
 
+
+'''fixme, issue with the options function'''
 function renderMultiselect(trackId, key, selected, options, goal, label) {
   if (!options.length) {
     return `<p class="locked-note">Choose a subplan above to see its course list.</p>`;

@@ -67,11 +67,13 @@ const subplans = [
   {
     value: "GENERAL TRACK (no subplan)",
     label: "General Track (no subplan)",
+    type: "no_subplan",
     courses: [],
   },
   {
     value: "AIG_POST_FA27",
-    label: "Artificial Intelligence (AIG) post-Fall 2027",
+    label: "Artificial Intelligence (AIG)",
+    courses: [],
     depthOptions: [
         "CSCI 5202 Introduction to Robotics",
         "CSCI 5214 Big Data Architecture",
