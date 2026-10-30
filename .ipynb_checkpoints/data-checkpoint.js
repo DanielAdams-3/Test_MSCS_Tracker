@@ -247,7 +247,6 @@ const subplans = [
   },
 ];
 
-
 const GENERAL_TRACK = subplans[0].value;
 const AIG_POST_FA27 = subplans[1].value;
 const SUBPLAN_COURSES_REQUIRED = 4;
@@ -296,18 +295,18 @@ const emenChoiceOptions = [
 
 const aigPostFA27DepthOptions = [
     "CSCI 5202 Introduction to Robotics",
+    "CSCI 5214 Big Data Architecture",
+    "CSCI 5254 Convex Optimization",
     "CSCI 5302 Advanced Robotics",
     "CSCI 5322 Algorithmic Human-Robot Interaction",
     "CSCI 5352 Network Analysis and Modeling",
     "CSCI 5434 Probability for Computer Science",
     "CSCI 5502 Data Mining",
+    "CSCI 5673 Distributed Systems",
     "CSCI 5722 Computer Vision",
+    "CSCI 5822 Probabilistic Models of Human and Machine Learning",
     "CSCI 5832 Natural Language Processing",
     "CSCI 5932 Deep Reinforcement Learning",
-    "CSCI 5214 Big Data Architecture",
-    "CSCI 5254 Convex Optimization",
-    "CSCI 5673 Distributed Systems",
-    "CSCI 5822 Probabilistic Models of Human and Machine Learning",
     "CSCI 6414 Information Theory, Statistical Inference, and Experimental Design",
     "CSCI 6712 Data-Centric Computer Vision",
     "CSCI 7000 Special Topics [Neuro-Symbolic NLP]",
