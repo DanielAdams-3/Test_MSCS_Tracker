@@ -203,7 +203,7 @@ function subplanRows() {
       label: "AI Core courses completed (3 courses / 9 cr)",
       requirement:
         "Select every AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed.",
-      visible: hasSubplan, hasPostFA27AIG,
+      visible: hasPostFA27AIG,
       input: { type: "multiselect", optionsFor:aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27CoreSelectedCount(state), AI_CORE_COURSES_REQUIRED),
     },
