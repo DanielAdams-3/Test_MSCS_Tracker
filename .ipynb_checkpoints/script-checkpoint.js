@@ -88,11 +88,11 @@ function subplanSelectedCount(state) {
 }
 
 function hasSubplan(state) {
-  return Boolean((state.subplan !== GENERAL_TRACK) && (state.hasPostFA27AIG));
+  return Boolean(state.subplan !== GENERAL_TRACK);
 }
 
 function hasPostFA27AIG(state) {
-  return Boolean(state.subplan !== AIG_POST_FA27);
+  return Boolean(state.subplan === AIG_POST_FA27);
 }
 
 function aigPostFA27CoreOptions(state) {
@@ -189,7 +189,7 @@ function subplanRows() {
       key: "subplanRemaining",
       label: "Subplan courses remaining",
       requirement: "Four subplan courses are required to have the specialization posted to your transcript.",
-      visible: hasSubplan,
+      visible: hasSubplan, !(hasPostFA27AIG),
       input: {
         type: "readout",
         valueFor: (state) =>
@@ -197,26 +197,13 @@ function subplanRows() {
       },
       status: (state) =>
         subplanSelectedCount(state) >= SUBPLAN_COURSES_REQUIRED ? "Completed" : "Incomplete",
-    },
-  ];
-}
-
-function aigPostFall2027Rows() {
-    return [
-    {
-      key: "hasPostFA27AIG",
-      label: "AI Subplan declared",
-      requirement:
-        "Subplans are never added automatically. Submit the MS Degree Change Request to add, swap, or remove a subplan, then verify it in the degree audit tool.",
-      visible: hasPostFA27AIG,
-      input: { type: "checkbox" },
-    },
+    },    
     {
       key: "aigPostFA27CoreCourses",
       label: "AI Core courses completed (3 courses / 9 cr)",
       requirement:
         "Select every AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed.",
-      visible: hasPostFA27AIG,
+      visible: hasSubplan, hasPostFA27AIG,
       input: { type: "multiselect", optionsFor:aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27CoreSelectedCount(state), AI_CORE_COURSES_REQUIRED),
     },
