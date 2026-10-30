@@ -96,15 +96,15 @@ function hasPostFA27AIG(state) {
 }
 
 function aigPostFA27CoreSelectedCount(state) {
-  return (state.aiCoreCourses || []).length;
+  return (state.aigPostFA27CoreOptions || []).length;
 }
 
 function aigPostFA27DepthSelectedCount(state) {
-  return (state.aiDepthCourses || []).length;
+  return (state.aigPostFA27DepthOptions || []).length;
 }
 
 function aigPostFA27ProfDevSelectedCount(state) {
-  return (state.aiProfDevCourses || []).length;
+  return (state.aigPostFA27ProfDevOptions || []).length;
 }
 
 function projectsWaived(state) {

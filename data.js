@@ -391,7 +391,7 @@ const faqItems = [
   {
     title: "How many courses does a subplan require?",
     description:
-      "Four courses (12 credit hours) from the subplan list, each with a B or higher. Courses may double-count toward your BIN or elective requirements.",
+      "Except for the AI Subplan (post-FA27 requirements), the remaining MSCPS Subplans require four (4) courses (12 credit hours) from the relevant subplan list, each with a B or higher. Courses may double-count toward the BIN or Elective requirements.",
     url: links.mscpsRequirements,
   },
   {
