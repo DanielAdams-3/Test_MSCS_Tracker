@@ -203,7 +203,7 @@ function aigPostFall2027Rows() {
       requirement:
         "Select every AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed.",
       visible: hasPostFA27AIG,
-      input: { type: "multiselect", optionsFor: aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
+      input: { type: "multiselect", aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27CoreSelectedCount(state), AI_CORE_COURSES_REQUIRED),
     },
     {
