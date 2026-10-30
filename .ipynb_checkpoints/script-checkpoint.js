@@ -1522,8 +1522,6 @@ function renderNumber(trackId, key, value, max, caption, label) {
   `;
 }
 
-
-'''fixme, issue with the options function'''
 function renderMultiselect(trackId, key, selected, options, goal, label) {
   if (!options.length) {
     return `<p class="locked-note">Choose a subplan above to see its course list.</p>`;
