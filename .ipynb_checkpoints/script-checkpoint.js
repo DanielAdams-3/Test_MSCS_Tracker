@@ -189,7 +189,7 @@ function subplanRows() {
       key: "subplanRemaining",
       label: "Subplan courses remaining",
       requirement: "Four subplan courses are required to have the specialization posted to your transcript.",
-      visible: hasSubplan, !(hasPostFA27AIG),
+      visible: hasSubplan,
       input: {
         type: "readout",
         valueFor: (state) =>
