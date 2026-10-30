@@ -72,7 +72,45 @@ const subplans = [
   {
     value: "AIG_POST_FA27",
     label: "Artificial Intelligence (AIG) post-Fall 2027",
-    courses: [],
+    depthOptions: [
+        "CSCI 5202 Introduction to Robotics",
+        "CSCI 5214 Big Data Architecture",
+        "CSCI 5254 Convex Optimization",
+        "CSCI 5302 Advanced Robotics",
+        "CSCI 5322 Algorithmic Human-Robot Interaction",
+        "CSCI 5352 Network Analysis and Modeling",
+        "CSCI 5434 Probability for Computer Science",
+        "CSCI 5502 Data Mining",
+        "CSCI 5673 Distributed Systems",
+        "CSCI 5722 Computer Vision",
+        "CSCI 5822 Probabilistic Models of Human and Machine Learning",
+        "CSCI 5832 Natural Language Processing",
+        "CSCI 5932 Deep Reinforcement Learning",
+        "CSCI 6414 Information Theory, Statistical Inference, and Experimental Design",
+        "CSCI 6712 Data-Centric Computer Vision",
+        "CSCI 7000 Special Topics [Neuro-Symbolic NLP]",
+        "CSCI 7000 Special Topics [NLP for Cultural Analytics]",
+        "CSCI 7000 Special Topics [Deep Language Understanding]",
+        "CSCI 7000 Special Topics [Systems for Machine Learning]",
+        "CSCI 7000 Special Topics [Geospatial and Statistical Machine Learning]",
+        "CSCI 7000 Special Topics [Vision Language Models for Robotics]",
+        "CSCI 7000 Special Topics [Physical Human-Robot Interaction]",
+        "CSCI 7314 Seminar on Algorithmic Economics and Machine Learning",
+        "APPM 5490 Theory of Machine Learning",
+        "APPM 5720 Open Topics [Convex Optimization]",
+        "ECEN 5672 Digital Image Processing",
+        "ECEN 5772 Digital Video",
+    ],
+    coreOptions: [
+        "CSCI 5622 Machine Learning",
+        "CSCI 5922 Neural Nets & Deep Learning",
+        "CSCI 5942 AI Engineering",
+    ],
+    profDevOptions: [
+        "CSCI 5011 AI Professional Skills",
+        "CSCI 5012 AI Toolkits",
+        "CSCI 5013 AI Ethics",
+    ],
   },
   {
     value: "Artificial Intelligence (AIG) pre-Fall 2027",
@@ -291,48 +329,6 @@ const nonPhdCreditOptions = [
 const emenChoiceOptions = [
   "EMEN 5030 Project Management",
   "EMEN 5405 Fundamentals of Systems Engineering",
-];
-
-const aigPostFA27DepthOptions = [
-    "CSCI 5202 Introduction to Robotics",
-    "CSCI 5214 Big Data Architecture",
-    "CSCI 5254 Convex Optimization",
-    "CSCI 5302 Advanced Robotics",
-    "CSCI 5322 Algorithmic Human-Robot Interaction",
-    "CSCI 5352 Network Analysis and Modeling",
-    "CSCI 5434 Probability for Computer Science",
-    "CSCI 5502 Data Mining",
-    "CSCI 5673 Distributed Systems",
-    "CSCI 5722 Computer Vision",
-    "CSCI 5822 Probabilistic Models of Human and Machine Learning",
-    "CSCI 5832 Natural Language Processing",
-    "CSCI 5932 Deep Reinforcement Learning",
-    "CSCI 6414 Information Theory, Statistical Inference, and Experimental Design",
-    "CSCI 6712 Data-Centric Computer Vision",
-    "CSCI 7000 Special Topics [Neuro-Symbolic NLP]",
-    "CSCI 7000 Special Topics [NLP for Cultural Analytics]",
-    "CSCI 7000 Special Topics [Deep Language Understanding]",
-    "CSCI 7000 Special Topics [Systems for Machine Learning]",
-    "CSCI 7000 Special Topics [Geospatial and Statistical Machine Learning]",
-    "CSCI 7000 Special Topics [Vision Language Models for Robotics]",
-    "CSCI 7000 Special Topics [Physical Human-Robot Interaction]",
-    "CSCI 7314 Seminar on Algorithmic Economics and Machine Learning",
-    "APPM 5490 Theory of Machine Learning",
-    "APPM 5720 Open Topics [Convex Optimization]",
-    "ECEN 5672 Digital Image Processing",
-    "ECEN 5772 Digital Video",
-];
-
-const aigPostFA27CoreOptions = [
-  "CSCI 5622 Machine Learning",
-  "CSCI 5922 Neural Nets & Deep Learning",
-  "CSCI 5942 AI Engineering",
-];
-
-const aigPostFA27ProfDevOptions = [
-  "CSCI 5011 AI Professional Skills",
-  "CSCI 5012 AI Toolkits",
-  "CSCI 5013 AI Ethics",
 ];
 
 const paceOptions = ["Full-time", "Part-time"];

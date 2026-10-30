@@ -95,6 +95,20 @@ function hasPostFA27AIG(state) {
   return (state.subplan === AIG_POST_FA27);
 }
 
+function aigPostFA27CoreOptions(state) {
+  const plan = subplans.find((item) => item.value === state.subplan);
+  return plan ? plan.coreOptions : [];
+}
+function aigPostFA27DepthOptions(state) {
+  const plan = subplans.find((item) => item.value === state.subplan);
+  return plan ? plan.depthOptions : [];
+}
+
+function aigPostFA27ProfDevOptions(state) {
+  const plan = subplans.find((item) => item.value === state.subplan);
+  return plan ? plan.profDevOptions : [];
+}
+
 function aigPostFA27CoreSelectedCount(state) {
   return (state.aigPostFA27CoreOptions || []).length;
 }
