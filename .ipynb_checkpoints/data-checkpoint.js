@@ -8,7 +8,7 @@
 const binCourses = {
   bin1: [
     "CSCI 5229 Computer Graphics",
-    "CSCI 5244 Quantum Computation and Information",
+    "CSCI 5244 Quantum Computation & Information",
     "CSCI 5254 Convex Optimization",
     "CSCI 5434 Probability for Computer Science",
     "CSCI 5444 Intro to Theory of Computation",
