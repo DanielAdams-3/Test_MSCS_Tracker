@@ -237,7 +237,7 @@ function subplanRows() {
       input: {
         type: "readout",
         valueFor: (state) =>
-          `${Math.max(0, AI_ProfDev_Courses_Required - aigPostFA27ProfDevSelectedCount(state))} remaining`,
+          `${Math.max(0, AI_PROFDEV_COURSES_REQUIRED - aigPostFA27ProfDevSelectedCount(state))} remaining`,
       },
       status: (state) =>
         aigPostFA27ProfDevSelectedCount(state) >= AI_PROFDEV_COURSES_REQUIRED ? "Completed" : "Incomplete",
@@ -259,7 +259,7 @@ function subplanRows() {
       input: {
         type: "readout",
         valueFor: (state) =>
-          `${Math.max(0, AI_Depth_Courses_Required - aigPostFA27DepthSelectedCount(state))} remaining`,
+          `${Math.max(0, AI_DEPTH_COURSES_REQUIRED - aigPostFA27DepthSelectedCount(state))} remaining`,
       },
       status: (state) =>
         aigPostFA27DepthSelectedCount(state) >= AI_DEPTH_COURSES_REQUIRED ? "Completed" : "Incomplete",
