@@ -653,8 +653,8 @@ const tracks = [
       const projects = !projectsWaived(state) ? 6 : 0;
       const electives = state.electives ? Math.min(state.electives, 15): 0;
       const extra = projectsWaived(state) ? Math.min(state.extraElectives, 6) : 0;
-      const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
-      const base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
+      var bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
+      var base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
       if (hasPostFA27AIG === true){
           const aiCore = Math.min(state.aigPostFA27CoreOptions, 9);
           const aiDepth = Math.min(state.aigPostFA27DepthOptions, 6);
@@ -674,7 +674,7 @@ const tracks = [
         ? {
             kicker: "Complete subplan requirements",
             value: addYears(state.entryTerm, 4),
-            visible: hasNOTPostFA27AIG;
+            visible: hasNOTPostFA27AIG,
             note: `${subplanOption(state.subplan)} — four courses, B or higher.`,
           }
         : null,
