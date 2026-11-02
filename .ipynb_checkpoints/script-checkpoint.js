@@ -95,6 +95,10 @@ function hasPostFA27AIG(state) {
   return Boolean(state.subplan === AIG_POST_FA27);
 }
 
+function hasNOTPostFA27AIG(state) {
+  return Boolean(state.subplan !== AIG_POST_FA27);
+}
+
 function aigPostFA27CoreOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
   return plan ? plan.coreOptions : [];
@@ -181,7 +185,7 @@ function subplanRows() {
       label: "Subplan courses completed (4 courses / 12 cr)",
       requirement:
         "Select every subplan course you have finished with a B or higher. A grade of C, C+, or B- cannot count toward the subplan. Subplan courses may double-count toward your BIN and Elective requirements.",
-      visible: hasSubplan,
+      visible: hasSubplan && hasNOTPostFA27AIG,
       input: { type: "multiselect", optionsFor: subplanCourses, goal: SUBPLAN_COURSES_REQUIRED },
       status: (state) => countStatus(subplanSelectedCount(state), SUBPLAN_COURSES_REQUIRED),
     },
@@ -189,7 +193,7 @@ function subplanRows() {
       key: "subplanRemaining",
       label: "Subplan courses remaining",
       requirement: "Four subplan courses are required to have the specialization posted to your transcript.",
-      visible: hasSubplan,
+      visible: hasSubplan && hasNOTPostFA27AIG,
       input: {
         type: "readout",
         valueFor: (state) =>
@@ -630,6 +634,7 @@ const tracks = [
       subplanDeclared: false,
       subplanCourses: [],
       hasPostFA27AIG: false,
+      hasNOTPostFA27AIG: true,
       aigPostFA27CoreOptions: [],
       aigPostFA27DepthOptions: [],
       aigPostFA27ProfDevOptions: [],
@@ -653,6 +658,7 @@ const tracks = [
             key: "electives",
             label: "Elective credit hours (15 cr)",
             requirement: ELECTIVE_NOTE,
+            visible: hasNOTPostFA27AIG,
             input: {
               type: "number",
               max: 15,
@@ -680,12 +686,17 @@ const tracks = [
       { title: "Subplan Requirements", visible: hasPostFA27AIG, rows: subplanRows() },
     ],
     breakdown(state) {
-      const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
       const projects = state.projects && !projectsWaived(state) ? 6 : 0;
-      const electives = Math.min(state.electives, 15);
       const extra = projectsWaived(state) ? Math.min(state.extraElectives, 6) : 0;
-      const base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
+      if (hasPostFA27AIG):
+          const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
+          const base = `Breadth ${bins}/6 · Projects ${projects}/6 · AI Core ${aigPostFA27CoreOptions}/9 · AI Professional Readiness ${aigPostFA27ProfDevOptions}/3 · AI Depth ${aigPostFA27DepthOptions}/6` ;
+      else:
+          const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
+          const electives = state.electives ? Math.min(state.electives, 15): 0;
+          const base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
       return projectsWaived(state) ? `${base} · Waiver electives ${extra}/6` : base;
+    
     },
     deadlines: (state) => [
       {
@@ -760,6 +771,7 @@ const tracks = [
       subplanDeclared: false,
       subplanCourses: [],
       hasPostFA27AIG: false,
+      hasNOTPostFA27AIG: true,
       aigPostFA27CoreOptions: [],
       aigPostFA27DepthOptions: [],
       aigPostFA27ProfDevOptions: [],
@@ -1201,6 +1213,7 @@ const tracks = [
       subplanDeclared: false,
       subplanCourses: [],
       hasPostFA27AIG: false,
+      hasNOTPostFA27AIG: true,
       aigPostFA27CoreOptions: [],
       aigPostFA27DepthOptions: [],
       aigPostFA27ProfDevOptions: [],
