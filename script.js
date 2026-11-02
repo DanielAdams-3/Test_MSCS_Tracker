@@ -103,6 +103,7 @@ function aigPostFA27CoreOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
   return plan ? plan.coreOptions : [];
 }
+
 function aigPostFA27DepthOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
   return plan ? plan.depthOptions : [];
@@ -206,67 +207,30 @@ function subplanRows() {
       key: "aigPostFA27CoreCourses",
       label: "AI Core courses completed (3 courses / 9 cr)",
       requirement:
-        "Select every AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed.",
+        "Select the AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed. Three AI Core courses are required to complete this part of the AI Specialization.",
       visible: hasPostFA27AIG,
       input: { type: "multiselect", optionsFor:aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
-      status: (state) => countStatus(aigPostFA27CoreSelectedCount(state), AI_CORE_COURSES_REQUIRED),
-    },
-    {
-      key: "aiPostFA27CoreRemaining",
-      label: "AI Core courses remaining",
-      requirement: "Three AI Core courses are required to complete this part of the AI Specialization.",
-      visible: hasPostFA27AIG,
-      input: {
-        type: "readout",
-        valueFor: (state) =>
-          `${Math.max(0, AI_CORE_COURSES_REQUIRED - aigPostFA27CoreSelectedCount(state))} remaining`,
-      },
-      status: (state) =>
-        aigPostFA27CoreSelectedCount(state) >= AI_CORE_COURSES_REQUIRED ? "Completed" : "Incomplete",
+      status: (state) => countStatus(state.aigPostFA27CoreSelected, AI_CORE_COURSES_REQUIRED),
+      credits: (state) => Math.min(state.electives, 12),
     },
     {
       key: "aigPostFA27ProfDevCourses",
       label: "AI Professional Development courses completed (3 courses / 3 cr)",
       requirement:
-        "Select every AI Professional Development course that you have finished with a B or higher. A grade of C, C+, or B- cannot count.",
+        "Select every AI Professional Development course that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Three AI Professional Development courses are required to complete this part of the AI Specialization.",
       visible: hasPostFA27AIG,
       input: { type: "multiselect", optionsFor: aigPostFA27ProfDevOptions, goal: AI_PROFDEV_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27ProfDevSelectedCount(state), AI_PROFDEV_COURSES_REQUIRED),
-    },
-    {
-      key: "aiPostFA27ProfDevRemaining",
-      label: "AI Professional Development courses remaining",
-      requirement: "Three AI Professional Development courses are required to complete this part of the AI Specialization.",
-      visible: hasPostFA27AIG,
-      input: {
-        type: "readout",
-        valueFor: (state) =>
-          `${Math.max(0, AI_PROFDEV_COURSES_REQUIRED - aigPostFA27ProfDevSelectedCount(state))} remaining`,
-      },
-      status: (state) =>
-        aigPostFA27ProfDevSelectedCount(state) >= AI_PROFDEV_COURSES_REQUIRED ? "Completed" : "Incomplete",
+      credits: (state) => countStatus(aigPostFA27ProfDevSelectedCount(state),),
     },
     {
       key: "aigPostFA27DepthCourses",
       label: "AI Depth courses completed (2 courses / 6 cr)",
       requirement:
-        "Select every AI Depth course that you have finished with a B or higher. If you completed one of the AI DEpth courses for a Bin 1 or Bin 3 requirement, do not select it here. There is no double counting between Bins 1/3 and the AI Depth Requirement. A grade of C, C+, or B- cannot count.",
+        "Select two AI Depth course that you have finished with a B or higher. If you completed one of the AI DEpth courses for a Bin 1 or Bin 3 requirement, do NOT select it here. There is no double counting between Bin 1/Bin 3 and the AI Depth Requirement. A grade of C, C+, or B- cannot count. Two AI Depth courses are required to complete this part of the AI Specialization.",
       visible: hasPostFA27AIG,
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED),
-    },
-    {
-      key: "aiPostFA27DepthRemaining",
-      label: "AI Depth courses remaining",
-      requirement: "Two AI Depth courses are required to complete this part of the AI Specialization.",
-      visible: hasPostFA27AIG,
-      input: {
-        type: "readout",
-        valueFor: (state) =>
-          `${Math.max(0, AI_DEPTH_COURSES_REQUIRED - aigPostFA27DepthSelectedCount(state))} remaining`,
-      },
-      status: (state) =>
-        aigPostFA27DepthSelectedCount(state) >= AI_DEPTH_COURSES_REQUIRED ? "Completed" : "Incomplete",
     },
   ];
 }
@@ -710,6 +674,7 @@ const tracks = [
         ? {
             kicker: "Complete subplan requirements",
             value: addYears(state.entryTerm, 4),
+            visible: hasNOTPostFA27AIG;
             note: `${subplanOption(state.subplan)} — four courses, B or higher.`,
           }
         : null,
