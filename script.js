@@ -688,8 +688,8 @@ const tracks = [
     breakdown(state) {
       const projects = !projectsWaived(state) ? 6 : 0;
       const extra = projectsWaived(state) ? Math.min(state.extraElectives, 6) : 0;
-      const base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
       const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
+      const base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
       const electives = state.electives ? Math.min(state.electives, 15): 0;
       if (hasPostFA27AIG === true){
           const aiCore = Math.min(state.aigPostFA27CoreOptions, 9);
