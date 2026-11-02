@@ -695,8 +695,8 @@ const tracks = [
           const aiCore = Math.min(state.aigPostFA27CoreOptions, 9);
           const aiDepth = Math.min(state.aigPostFA27DepthOptions, 6);
           const aiProfDev = Math.min(state.aigPostFA27ProfDevOptions, 3);
-          const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
-          const base = `Breadth ${bins}/6 · Projects ${projects}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aigPostFA27ProfDevOptions}/3 · AI Depth ${aigPostFA27DepthOptions}/6` ;
+          bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
+          base = `Breadth ${bins}/6 · Projects ${projects}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aigPostFA27ProfDevOptions}/3 · AI Depth ${aigPostFA27DepthOptions}/6` ;
       }
       return projectsWaived(state) ? `${base} · Waiver electives ${extra}/6` : base;
     },
