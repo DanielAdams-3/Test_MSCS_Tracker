@@ -211,7 +211,7 @@ function subplanRows() {
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor:aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
       status: (state) => countStatus(state.aigPostFA27CoreSelected, AI_CORE_COURSES_REQUIRED),
-      credits: (state) => state.aigPostFA27CoreSelected.length,
+      credits: (state) => state.aigPostFA27CoreOptions.length,
     },
     {
       key: "aigPostFA27ProfDevCourses",
@@ -221,7 +221,7 @@ function subplanRows() {
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27ProfDevOptions, goal: AI_PROFDEV_COURSES_REQUIRED },
       status: (state) => countStatus(state.aigPostFA27ProfDevSelected, AI_PROFDEV_COURSES_REQUIRED),
-      credits: (state) => state.aigPostFA27ProfDevSelected.length,
+      credits: (state) => state.aigPostFA27ProfDevOptions.length,
     },
     {
       key: "aigPostFA27DepthCourses",
