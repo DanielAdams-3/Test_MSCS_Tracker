@@ -178,7 +178,7 @@ function subplanRows() {
       label: "Subplan officially declared",
       requirement:
         "Subplans are never added automatically. Submit the MS Degree Change Request to add, swap, or remove a subplan, then verify it in the degree audit tool.",
-      visible: ((hasSubplan && hasNOTPostFA27AIG)||(hasPostFA27AIG)),
+      visible: hasSubplan,
       input: { type: "checkbox" },
     },
     {
@@ -649,7 +649,7 @@ const tracks = [
       { title: "Subplan Requirements", visible: hasSubplan, rows: subplanRows() },
     ],
     breakdown(state) {
-        if (hasPostFA27AIG){
+        if (hasSubplan && hasPostFA27AIG){
           const waived = bamAutoWaiver(state) || projectsWaived(state);
           const projects = !waived && state.projects ? 6 : 0;
           const electives = state.electives ? Math.min(state.electives, 15): 0;
@@ -658,8 +658,8 @@ const tracks = [
           const aiDepth = Math.min(state.aigPostFA27DepthOptions, 6);
           const aiProfDev = Math.min(state.aigPostFA27ProfDevOptions, 3);
           const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
-          const base = `Breadth ${bins}/6 · Projects ${projects}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6` ;
-          return waived ? `${base} · Waiver electives ${extra}/6` : base;
+          const base = `Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6` ;
+          return waived ? `${base} · Waiver electives ${extra}/6` : `${base}  · Projects ${projects}/6`;
         }
       else {
           const waived = bamAutoWaiver(state) || projectsWaived(state);
@@ -667,8 +667,8 @@ const tracks = [
           const electives = state.electives ? Math.min(state.electives, 15): 0;
           const extra = waived ? Math.min(state.extraElectives, 6) : 0;
           const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
-          const base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
-          return waived ? `${base} · Waiver electives ${extra}/6` : base;
+          const base = `Breadth ${bins}/9 ·Electives ${electives}/15`;
+          return waived ? `${base} · Waiver electives ${extra}/6` : `${base}  · Projects ${projects}/6`;
       }
     },
     deadlines: (state) => [
