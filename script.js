@@ -663,7 +663,7 @@ const tracks = [
         },
     }
     else {
-      breakdown(state) {
+        breakdown(state) {
           const waived = bamAutoWaiver(state) || projectsWaived(state);
           const projects = !waived && state.projects ? 6 : 0;
           const electives = state.electives ? Math.min(state.electives, 15): 0;
