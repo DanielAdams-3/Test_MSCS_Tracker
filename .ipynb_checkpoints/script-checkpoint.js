@@ -115,15 +115,15 @@ function aigPostFA27ProfDevOptions(state) {
 }
 
 function aigPostFA27CoreSelectedCount(state) {
-  return (state.aigPostFA27CoreOptions || []).length;
+  return state.aigPostFA27CoreOptions.length;
 }
 
 function aigPostFA27DepthSelectedCount(state) {
-  return (state.aigPostFA27DepthOptions || []).length;
+  return state.aigPostFA27DepthOptions.length;
 }
 
 function aigPostFA27ProfDevSelectedCount(state) {
-  return (state.aigPostFA27ProfDevOptions || []).length;
+  return state.aigPostFA27ProfDevOptions.length;
 }
 
 function projectsWaived(state) {
