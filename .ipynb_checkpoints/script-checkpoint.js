@@ -156,7 +156,7 @@ function binRows() {
     {
       key: "bin2",
       label: "Breadth — BIN 2 (3 cr)",
-      visible: !(hasPostFA27AIG),
+      visible: hasNOTPostFA27AIG,
       requirement: BIN_NOTE,
       input: { type: "select", options: binCourses.bin2, placeholder: "Select a BIN 2 course" },
       credits: (state) => (state.bin2 ? 3 : 0),
@@ -186,7 +186,7 @@ function subplanRows() {
       label: "Subplan courses completed (4 courses / 12 cr)",
       requirement:
         "Select every subplan course you have finished with a B or higher. A grade of C, C+, or B- cannot count toward the subplan. Subplan courses may double-count toward your BIN and Elective requirements.",
-      visible: hasSubplan && hasNOTPostFA27AIG,
+      visible: (hasSubplan && hasNOTPostFA27AIG),
       input: { type: "multiselect", optionsFor: subplanCourses, goal: SUBPLAN_COURSES_REQUIRED },
       status: (state) => countStatus(subplanSelectedCount(state), SUBPLAN_COURSES_REQUIRED),
     },
@@ -194,7 +194,7 @@ function subplanRows() {
       key: "subplanRemaining",
       label: "Subplan courses remaining",
       requirement: "Four subplan courses are required to have the specialization posted to your transcript.",
-      visible: hasSubplan && hasNOTPostFA27AIG,
+      visible: (hasSubplan && hasNOTPostFA27AIG),
       input: {
         type: "readout",
         valueFor: (state) =>
@@ -208,7 +208,7 @@ function subplanRows() {
       label: "AI Core courses completed (3 courses / 9 cr)",
       requirement:
         "Select the AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed. Three AI Core courses are required to complete this part of the AI Specialization.",
-      visible: hasPostFA27AIG,
+      visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor:aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
       status: (state) => countStatus(state.aigPostFA27CoreSelected, AI_CORE_COURSES_REQUIRED),
       credits: (state) => Math.min(state.electives, 12),
@@ -218,7 +218,7 @@ function subplanRows() {
       label: "AI Professional Development courses completed (3 courses / 3 cr)",
       requirement:
         "Select every AI Professional Development course that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Three AI Professional Development courses are required to complete this part of the AI Specialization.",
-      visible: hasPostFA27AIG,
+      visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27ProfDevOptions, goal: AI_PROFDEV_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27ProfDevSelectedCount(state), AI_PROFDEV_COURSES_REQUIRED),
       credits: (state) => countStatus(aigPostFA27ProfDevSelectedCount(state),),
@@ -228,7 +228,7 @@ function subplanRows() {
       label: "AI Depth courses completed (2 courses / 6 cr)",
       requirement:
         "Select two AI Depth course that you have finished with a B or higher. If you completed one of the AI DEpth courses for a Bin 1 or Bin 3 requirement, do NOT select it here. There is no double counting between Bin 1/Bin 3 and the AI Depth Requirement. A grade of C, C+, or B- cannot count. Two AI Depth courses are required to complete this part of the AI Specialization.",
-      visible: hasPostFA27AIG,
+      visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED),
     },
@@ -646,7 +646,7 @@ const tracks = [
           },
         ],
       },
-      { title: "Subplan Requirements", visible: ((hasSubplan && hasNOTPostFA27AIG) || hasPostFA27AIG), rows: subplanRows() },
+      { title: "Subplan Requirements", visible: hasSubplan, rows: subplanRows() },
     ],
     breakdown(state) {
         if (hasPostFA27AIG){
