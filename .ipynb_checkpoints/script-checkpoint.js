@@ -646,8 +646,7 @@ const tracks = [
           },
         ],
       },
-      { title: "Subplan Requirements", visible: (hasSubplan && hasNOTPostFA27AIG), rows: subplanRows() },
-      { title: "Subplan Requirements", visible: hasPostFA27AIG, rows: subplanRows() },
+      { title: "Subplan Requirements", visible: ((hasSubplan && hasNOTPostFA27AIG) || hasPostFA27AIG), rows: subplanRows() },
     ],
     if (hasPostFA27AIG===true){
           const projects = !waived && state.projects ? 6 : 0;
@@ -663,7 +662,6 @@ const tracks = [
           const waived = bamAutoWaiver(state) || projectsWaived(state);
           const projects = !waived && state.projects ? 6 : 0;
           const electives = Math.min(state.electives, 15);
-          const projects = !projectsWaived(state) ? 6 : 0;
           const electives = state.electives ? Math.min(state.electives, 15): 0;
           const extra = waived ? Math.min(state.extraElectives, 6) : 0;
           const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
@@ -681,7 +679,7 @@ const tracks = [
         ? {
             kicker: "Complete subplan requirements",
             value: addYears(state.entryTerm, 4),
-            visible: hasNOTPostFA27AIG,
+            visible: (hasNOTPostFA27AIG && hasSubplan),
             note: `${subplanOption(state.subplan)} — four courses, B or higher.`,
           }
         : null,
