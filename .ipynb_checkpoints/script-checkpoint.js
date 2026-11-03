@@ -648,8 +648,8 @@ const tracks = [
       },
       { title: "Subplan Requirements", visible: ((hasSubplan && hasNOTPostFA27AIG) || hasPostFA27AIG), rows: subplanRows() },
     ],
-    if (hasPostFA27AIG){
-        breakdown(state) {
+    breakdown(state) {
+        if (hasPostFA27AIG){
           const waived = bamAutoWaiver(state) || projectsWaived(state);
           const projects = !waived && state.projects ? 6 : 0;
           const electives = state.electives ? Math.min(state.electives, 15): 0;
@@ -660,10 +660,8 @@ const tracks = [
           const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
           const base = `Breadth ${bins}/6 · Projects ${projects}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aigPostFA27ProfDevOptions}/3 · AI Depth ${aigPostFA27DepthOptions}/6` ;
           return waived ? `${base} · Waiver electives ${extra}/6` : base;
-        },
-    };
-    else {
-        breakdown(state) {
+        }
+      else {
           const waived = bamAutoWaiver(state) || projectsWaived(state);
           const projects = !waived && state.projects ? 6 : 0;
           const electives = state.electives ? Math.min(state.electives, 15): 0;
@@ -671,8 +669,8 @@ const tracks = [
           const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
           const base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
           return waived ? `${base} · Waiver electives ${extra}/6` : base;
-      },
-    };
+      }
+    },
     deadlines: (state) => [
       {
         kicker: "Complete all course requirements",
