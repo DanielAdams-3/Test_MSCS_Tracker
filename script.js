@@ -661,7 +661,7 @@ const tracks = [
           const base = `Breadth ${bins}/6 · Projects ${projects}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aigPostFA27ProfDevOptions}/3 · AI Depth ${aigPostFA27DepthOptions}/6` ;
           return waived ? `${base} · Waiver electives ${extra}/6` : base;
         },
-    }
+    };
     else {
         breakdown(state) {
           const waived = bamAutoWaiver(state) || projectsWaived(state);
@@ -672,7 +672,7 @@ const tracks = [
           const base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
           return waived ? `${base} · Waiver electives ${extra}/6` : base;
       },
-    }
+    };
     deadlines: (state) => [
       {
         kicker: "Complete all course requirements",
