@@ -211,7 +211,7 @@ function subplanRows() {
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor:aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
       status: (state) => countStatus(state.aigPostFA27CoreSelected, AI_CORE_COURSES_REQUIRED),
-      credits: (state) => Math.min(state.electives, 12),
+      credits: (state) => state.aigPostFA27CoreSelected.length,
     },
     {
       key: "aigPostFA27ProfDevCourses",
@@ -220,8 +220,8 @@ function subplanRows() {
         "Select every AI Professional Development course that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Three AI Professional Development courses are required to complete this part of the AI Specialization.",
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27ProfDevOptions, goal: AI_PROFDEV_COURSES_REQUIRED },
-      status: (state) => countStatus(aigPostFA27ProfDevSelectedCount(state), AI_PROFDEV_COURSES_REQUIRED),
-      credits: (state) => countStatus(aigPostFA27ProfDevSelectedCount(state),),
+      status: (state) => countStatus(state.aigPostFA27ProfDevSelected, AI_PROFDEV_COURSES_REQUIRED),
+      credits: (state) => state.aigPostFA27ProfDevSelected.length,
     },
     {
       key: "aigPostFA27DepthCourses",
@@ -231,6 +231,7 @@ function subplanRows() {
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED),
+      credits: (state) => state.aigPostFA27DepthSelected.length,
     },
   ];
 }
