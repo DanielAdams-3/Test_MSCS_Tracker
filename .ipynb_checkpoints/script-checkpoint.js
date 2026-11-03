@@ -101,17 +101,17 @@ function hasNOTPostFA27AIG(state) {
 
 function aigPostFA27CoreOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
-  return plan ? plan.aigPostFA27CoreOptions : [];
+  return plan ? state.aigPostFA27CoreOptions : [];
 }
 
 function aigPostFA27DepthOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
-  return plan ? plan.aigPostFA27DepthOptions : [];
+  return plan ? state.aigPostFA27DepthOptions : [];
 }
 
 function aigPostFA27ProfDevOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
-  return plan ? plan.aigPostFA27ProfDevOptions : [];
+  return plan ? state.aigPostFA27ProfDevOptions : [];
 }
 
 function aigPostFA27CoreSelectedCount(state) {
