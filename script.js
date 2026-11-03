@@ -649,21 +649,28 @@ const tracks = [
       { title: "Subplan Requirements", visible: (hasSubplan && hasNOTPostFA27AIG), rows: subplanRows() },
       { title: "Subplan Requirements", visible: hasPostFA27AIG, rows: subplanRows() },
     ],
-    breakdown(state) {
-      const projects = !projectsWaived(state) ? 6 : 0;
-      const electives = state.electives ? Math.min(state.electives, 15): 0;
-      const extra = projectsWaived(state) ? Math.min(state.extraElectives, 6) : 0;
-      var bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
-      var base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
-      if (hasPostFA27AIG === true){
+    if (hasPostFA27AIG===true){
+          const projects = !waived && state.projects ? 6 : 0;
+          const waived = bamAutoWaiver(state) || projectsWaived(state);
           const aiCore = Math.min(state.aigPostFA27CoreOptions, 9);
           const aiDepth = Math.min(state.aigPostFA27DepthOptions, 6);
           const aiProfDev = Math.min(state.aigPostFA27ProfDevOptions, 3);
-          bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
-          base = `Breadth ${bins}/6 · Projects ${projects}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aigPostFA27ProfDevOptions}/3 · AI Depth ${aigPostFA27DepthOptions}/6` ;
-      }
-      return projectsWaived(state) ? `${base} · Waiver electives ${extra}/6` : base;
-    },
+          const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
+          const base = `Breadth ${bins}/6 · Projects ${projects}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aigPostFA27ProfDevOptions}/3 · AI Depth ${aigPostFA27DepthOptions}/6` ;
+    }
+    else {
+      breakdown(state) {
+          const waived = bamAutoWaiver(state) || projectsWaived(state);
+          const projects = !waived && state.projects ? 6 : 0;
+          const electives = Math.min(state.electives, 15);
+          const projects = !projectsWaived(state) ? 6 : 0;
+          const electives = state.electives ? Math.min(state.electives, 15): 0;
+          const extra = waived ? Math.min(state.extraElectives, 6) : 0;
+          const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
+          const base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
+          return waived ? `${base} · Waiver electives ${extra}/6` : base;
+      },
+    }
     deadlines: (state) => [
       {
         kicker: "Complete all course requirements",
