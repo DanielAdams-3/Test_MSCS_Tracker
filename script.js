@@ -189,7 +189,7 @@ function subplanRows() {
       visible: (hasSubplan && hasNOTPostFA27AIG),
       input: { type: "multiselect", optionsFor: subplanCourses, goal: SUBPLAN_COURSES_REQUIRED },
       status: (state) => countStatus(subplanSelectedCount(state), SUBPLAN_COURSES_REQUIRED),
-    },
+    },      
     {
       key: "subplanRemaining",
       label: "Subplan courses remaining",
@@ -656,6 +656,7 @@ const tracks = [
           const electives = state.electives ? Math.min(state.electives, 15): 0;
           const extra = waived ? Math.min(state.extraElectives, 6) : 0;
           const aiCore = Math.min(state.aigPostFA27CoreOptions, 9);
+aigPostFA27CoreSelectedCount(state)
           const aiDepth = Math.min(state.aigPostFA27DepthOptions, 6);
           const aiProfDev = Math.min(state.aigPostFA27ProfDevOptions, 3);
           const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
