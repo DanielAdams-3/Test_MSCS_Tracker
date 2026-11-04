@@ -101,29 +101,29 @@ function hasNOTPostFA27AIG(state) {
 
 function aigPostFA27CoreOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
-  return state.aigPostFA27CoreOptions || [];
+  return plan ? plan.coreOptions : [];
 }
 
 function aigPostFA27DepthOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
-  return plan ? state.aigPostFA27DepthOptions : [];
+  return plan ? plan.depthOptions : [];
 }
 
 function aigPostFA27ProfDevOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
-  return plan ? state.aigPostFA27ProfDevOptions : [];
+  return plan ? plan.profDevOptions : [];
 }
 
 function aigPostFA27CoreSelectedCount(state) {
-  return state.aigPostFA27CoreOptions.length;
+  return (state.aigPostFA27CoreOptions || []).length;
 }
 
 function aigPostFA27DepthSelectedCount(state) {
-  return state.aigPostFA27DepthOptions.length;
+  return (state.aigPostFA27DepthOptions || []).length;
 }
 
 function aigPostFA27ProfDevSelectedCount(state) {
-  return state.aigPostFA27ProfDevOptions.length;
+  return (state.aigPostFA27ProfDevOptions || []).length;
 }
 
 function projectsWaived(state) {
