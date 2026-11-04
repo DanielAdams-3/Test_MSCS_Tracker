@@ -231,7 +231,7 @@ function subplanRows() {
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED),
-      credits: (state) => aigPostFA27DepthSelectedCount(state)*3,
+      credits: valueFor: (state) => Math.max(0, AI_DEPTH_COURSES_REQUIRED - aigPostFA27DepthSelectedCount(state)),
     },
   ];
 }
@@ -601,6 +601,7 @@ const tracks = [
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
       aigPostFA27CoreOptions: [],
+      aiDepth: 0,
       aigPostFA27DepthOptions: [],
       aigPostFA27ProfDevOptions: [],
     },
