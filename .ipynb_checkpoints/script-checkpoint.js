@@ -219,7 +219,7 @@ function subplanRows() {
     },
     {
       key: "aicore1",
-      label: "AI Core 1 (3 cr)",
+      label: "CSCI 5622 Machine Learning - AI Core #1 (3 cr)",
       requirement:"CSCI 5622 Machine Learning, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
       input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
@@ -227,7 +227,7 @@ function subplanRows() {
     },
     {
       key: "aicore2",
-      label: "AI Core 2 (3 cr)",
+      label: "CSCI 5922 Neural Nets & Deep Learning - AI Core #2 (3 cr)",
       requirement:"CSCI 5922 Neural Nets & Deep Learning, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
       input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
@@ -235,7 +235,7 @@ function subplanRows() {
     },
     {
       key: "aicore3",
-      label: "AI Core 3 (3 cr)",
+      label: "CSCI 5942 AI Enineering - AI Core #3 (3 cr)",
       requirement:"CSCI 5942 AI Engineering, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
       input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
@@ -248,7 +248,8 @@ function subplanRows() {
         "Select two AI Depth courses that you have finished with a B or higher. If you completed one of the AI DEpth courses for a Bin 1 or Bin 3 requirement, do NOT select it here. There is no double counting between Bin 1/Bin 3 and the AI Depth Requirement. A grade of C, C+, or B- cannot count. Two AI Depth courses are required to complete this part of the AI Specialization.",
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
-      status: (state) => countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED),
+      status: (state) =>
+        aigPostFA27DepthSelectedCount(state) >= AI_DEPTH_COURSES_REQUIRED ? "Completed" : "Incomplete",
       credits: (state) => Math.max(0, AI_DEPTH_COURSES_REQUIRED - aigPostFA27DepthSelectedCount(state)),
     },
   ];
@@ -618,6 +619,7 @@ const tracks = [
       subplanCourses: [],
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
+      aigPostFA27DepthOptions: [],
       aipd1: "",
       aipd2: "",
       aipd3: "",
@@ -681,7 +683,7 @@ const tracks = [
           const aiDepth = 0;
           const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
           const base = `Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6` ;
-          return waived ? `${base} · Waiver electives ${extra}/6` : `${base}  · Projects ${projects}/6`;
+          return waived ? `${base} · Waiver electives ${extra}/6` : `${base} · Projects ${projects}/6`;
         }
       else {
           const waived = bamAutoWaiver(state) || projectsWaived(state);
