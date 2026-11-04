@@ -248,8 +248,7 @@ function subplanRows() {
         "Select two AI Depth courses that you have finished with a B or higher. If you completed one of the AI DEpth courses for a Bin 1 or Bin 3 requirement, do NOT select it here. There is no double counting between Bin 1/Bin 3 and the AI Depth Requirement. A grade of C, C+, or B- cannot count. Two AI Depth courses are required to complete this part of the AI Specialization.",
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
-      status: (state) =>
-        aigPostFA27DepthSelectedCount(state) >= AI_DEPTH_COURSES_REQUIRED ? "Completed" : "Incomplete",
+      status: (state) => countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED),
       credits: (state) => (aigPostFA27DepthSelectedCount(state) >= 2 ? 6 : 0),
     },
   ];
@@ -768,7 +767,6 @@ const tracks = [
       extraElectives: 0,
       subplanDeclared: false,
       subplanCourses: [],
-        
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
       aigPostFA27DepthOptions: [],
@@ -1999,7 +1997,7 @@ function handleInputChange(event) {
   }
 
   // Changing the subplan invalidates any courses picked for the previous one.
-  if (key === "subplan") state.subplanCourses = [];
+  if (key === "subplan") state.subplanCourses = [] ;
 
   // BAM start terms are relative to the final undergraduate term.
   if (key === "finalUgTerm") {
