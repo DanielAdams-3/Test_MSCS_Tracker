@@ -101,7 +101,7 @@ function hasNOTPostFA27AIG(state) {
 
 function aigPostFA27CoreOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
-  return plan ? state.aigPostFA27CoreOptions : [];
+  return state.aigPostFA27CoreOptions || [];
 }
 
 function aigPostFA27DepthOptions(state) {
@@ -209,7 +209,7 @@ function subplanRows() {
       requirement:
         "Select the AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed. Three AI Core courses are required to complete this part of the AI Specialization.",
       visible: (hasSubplan && hasPostFA27AIG),
-      input: { type: "multiselect", optionsFor:aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
+      input: { type: "multiselect", optionsFor: aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27CoreSelectedCount(state), AI_CORE_COURSES_REQUIRED),
       credits: (state) => aigPostFA27CoreSelectedCount(state)*3,
     },
