@@ -78,6 +78,14 @@ function binsComplete(state) {
   return Boolean(state.bin1 && state.bin2 && state.bin3);
 }
 
+function aiCoreComplete(state) {
+  return Boolean(state.aicore1 && state.aicore2 && state.aicore3);
+}
+
+function aiProfDevComplete(state) {
+  return Boolean(state.aipd1 && state.aipd2 && state.aipd3);
+}
+
 function subplanCourses(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
   return plan ? plan.courses : [];
@@ -99,31 +107,13 @@ function hasNOTPostFA27AIG(state) {
   return Boolean(state.subplan !== AIG_POST_FA27);
 }
 
-function aigPostFA27CoreOptions(state) {
-  const plan = subplans.find((item) => item.value === state.subplan);
-  return plan ? plan.coreOptions : [];
-}
-
 function aigPostFA27DepthOptions(state) {
   const plan = subplans.find((item) => item.value === state.subplan);
   return plan ? plan.depthOptions : [];
 }
 
-function aigPostFA27ProfDevOptions(state) {
-  const plan = subplans.find((item) => item.value === state.subplan);
-  return plan ? plan.profDevOptions : [];
-}
-
-function aigPostFA27CoreSelectedCount(state) {
-  return (state.aigPostFA27CoreOptions || []).length;
-}
-
 function aigPostFA27DepthSelectedCount(state) {
   return (state.aigPostFA27DepthOptions || []).length;
-}
-
-function aigPostFA27ProfDevSelectedCount(state) {
-  return (state.aigPostFA27ProfDevOptions || []).length;
 }
 
 function projectsWaived(state) {
@@ -204,24 +194,52 @@ function subplanRows() {
         subplanSelectedCount(state) >= SUBPLAN_COURSES_REQUIRED ? "Completed" : "Incomplete",
     },    
     {
-      key: "aigPostFA27CoreCourses",
-      label: "AI Core courses completed (3 courses / 9 cr)",
-      requirement:
-        "Select the AI Core courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Note that this requirement will also satisfy the Bin 2 requirement. No other double-counting is allowed. Three AI Core courses are required to complete this part of the AI Specialization.",
+      key: "aipd1",
+      label: "AI Professional Development 1 (1 cr)",
+      requirement:"CSCI 5011 AI Professional Skills, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
-      input: { type: "multiselect", optionsFor: aigPostFA27CoreOptions, goal: AI_CORE_COURSES_REQUIRED },
-      status: (state) => countStatus(aigPostFA27CoreSelectedCount(state), AI_CORE_COURSES_REQUIRED),
-      credits: (state) => aigPostFA27CoreSelectedCount(state)*3,
+      credits: (state) => (state.aipd1 ? 1 : 0),
     },
     {
-      key: "aigPostFA27ProfDevCourses",
-      label: "AI Professional Development courses completed (3 courses / 3 cr)",
-      requirement:
-        "Select every AI Professional Development course that you have finished with a B or higher. A grade of C, C+, or B- cannot count. Three AI Professional Development courses are required to complete this part of the AI Specialization.",
+      key: "aipd2",
+      label: "AI Professional Development 2 (1 cr)",
+      requirement:"CSCI 5012 AI Toolkits, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
-      input: { type: "multiselect", optionsFor: aigPostFA27ProfDevOptions, goal: AI_PROFDEV_COURSES_REQUIRED },
-      status: (state) => countStatus(aigPostFA27ProfDevSelectedCount(state), AI_PROFDEV_COURSES_REQUIRED),
-      credits: (state) => aigPostFA27ProfDevSelectedCount(state),
+      credits: (state) => (state.aipd2 ? 1 : 0),
+    },
+    {
+      key: "aipd3",
+      label: "AI Professional Development 3 (1 cr)",
+      requirement:"CSCI 5013 AI Ethics, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      input: { type: "checkbox" },
+      visible: (hasSubplan && hasPostFA27AIG),
+      credits: (state) => (state.aipd3 ? 1 : 0),
+    },
+    {
+      key: "aicore1",
+      label: "AI Core 1 (3 cr)",
+      requirement:"CSCI 5622 Machine Learning, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      input: { type: "checkbox" },
+      visible: (hasSubplan && hasPostFA27AIG),
+      credits: (state) => (state.aicore1 ? 3 : 0),
+    },
+    {
+      key: "aicore2",
+      label: "AI Core 2 (3 cr)",
+      requirement:"CSCI 5922 Neural Nets & Deep Learning, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      input: { type: "checkbox" },
+      visible: (hasSubplan && hasPostFA27AIG),
+      credits: (state) => (state.aicore2 ? 3 : 0),
+    },
+    {
+      key: "aicore3",
+      label: "AI Core 3 (3 cr)",
+      requirement:"CSCI 5942 AI Engineering, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      input: { type: "checkbox" },
+      visible: (hasSubplan && hasPostFA27AIG),
+      credits: (state) => (state.aicore3 ? 3 : 0),
     },
     {
       key: "aigPostFA27DepthCourses",
@@ -600,10 +618,12 @@ const tracks = [
       subplanCourses: [],
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
-      aigPostFA27CoreOptions: [],
-      aiDepth: 0,
-      aigPostFA27DepthOptions: [],
-      aigPostFA27ProfDevOptions: [],
+      aipd1: "",
+      aipd2: "",
+      aipd3: "",
+      aicore1: "",
+      aicore2: "",
+      aicore3: "",
     },
     plan: [
       {
@@ -656,9 +676,9 @@ const tracks = [
           const projects = !waived && state.projects ? 6 : 0;
           const electives = state.electives ? Math.min(state.electives, 15): 0;
           const extra = waived ? Math.min(state.extraElectives, 6) : 0;
-          const aiCore = aigPostFA27CoreSelectedCount(state)*3;
-          const aiDepth = aigPostFA27DepthSelectedCount(state)*3;
-          const aiProfDev = aigPostFA27ProfDevSelectedCount(state)*3;
+          const aiCore =  (state.aicore1 ? 3 : 0) + (state.aicore2 ? 3 : 0) + (state.aicore3 ? 3: 0);
+          const aiProfDev =  (state.aipd1 ? 1 : 0) + (state.aipd2 ? 1 : 0) + (state.aipd3 ? 1: 0);
+          const aiDepth = 0;
           const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
           const base = `Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6` ;
           return waived ? `${base} · Waiver electives ${extra}/6` : `${base}  · Projects ${projects}/6`;
@@ -746,11 +766,16 @@ const tracks = [
       extraElectives: 0,
       subplanDeclared: false,
       subplanCourses: [],
+        
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
-      aigPostFA27CoreOptions: [],
       aigPostFA27DepthOptions: [],
-      aigPostFA27ProfDevOptions: [],
+      aipd1: "",
+      aipd2: "",
+      aipd3: "",
+      aicore1: "",
+      aicore2: "",
+      aicore3: "",
     },
     plan: [
       {
@@ -964,9 +989,14 @@ const tracks = [
       subplanDeclared: false,
       subplanCourses: [],
       hasPostFA27AIG: false,
-      aigPostFA27CoreOptions: [],
+      hasNOTPostFA27AIG: true,
       aigPostFA27DepthOptions: [],
-      aigPostFA27ProfDevOptions: [],
+      aipd1: "",
+      aipd2: "",
+      aipd3: "",
+      aicore1: "",
+      aicore2: "",
+      aicore3: "",
     },
     plan: [
       {
@@ -1188,11 +1218,16 @@ const tracks = [
       extraElectives: 0,
       subplanDeclared: false,
       subplanCourses: [],
+        
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
-      aigPostFA27CoreOptions: [],
       aigPostFA27DepthOptions: [],
-      aigPostFA27ProfDevOptions: [],
+      aipd1: "",
+      aipd2: "",
+      aipd3: "",
+      aicore1: "",
+      aicore2: "",
+      aicore3: "",
     },
     plan: [
       {
