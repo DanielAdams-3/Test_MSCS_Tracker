@@ -245,7 +245,7 @@ function subplanRows() {
       key: "aigPostFA27DepthCourses",
       label: "AI Depth courses completed (2 courses / 6 cr)",
       requirement:
-        "Select two AI Depth courses that you have finished with a B or higher. If you completed one of the AI DEpth courses for a Bin 1 or Bin 3 requirement, do NOT select it here. There is no double counting between Bin 1/Bin 3 and the AI Depth Requirement. A grade of C, C+, or B- cannot count. Two AI Depth courses are required to complete this part of the AI Specialization.",
+        "Select two AI Depth courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. You may not select a course that you are already counting towards Bin 1 or Bin 3. Courses may count to EITHER a Bin requirement OR AI Depth, not both.",
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
       status: (state) =>  (countStatus(aigPostFA27DepthSelectedCount(state),AI_DEPTH_COURSES_REQUIRED)),
@@ -2010,6 +2010,7 @@ function handleInputChange(event) {
   }
 
   renderTrack(track);
+  console.log(key, state[key]);
 }
 
 /* ---------- Tabs -------------------------------------------------------- */
