@@ -2010,7 +2010,9 @@ function handleInputChange(event) {
   }
 
   renderTrack(track);
-  console.log(key, state[key]);
+    console.log(key);
+    console.log(track.state);
+    console.log(key in track.state);
 }
 
 /* ---------- Tabs -------------------------------------------------------- */
