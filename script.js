@@ -113,7 +113,7 @@ function aigPostFA27DepthOptions(state) {
 }
 
 function aigPostFA27DepthSelectedCount(state) {
-  return (state.aigPostFA27DepthOptions || []).length;
+  return (state.aigPostFA27DepthCourses || []).length;
 }
 
 function projectsWaived(state) {
