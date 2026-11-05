@@ -619,7 +619,7 @@ const tracks = [
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
       aidepth: 0,
-      aigPostFA27DepthOptions: [],
+      aigPostFA27DepthCourses: [],
       aipd1: "",
       aipd2: "",
       aipd3: "",
