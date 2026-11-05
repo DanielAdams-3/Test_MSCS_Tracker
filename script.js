@@ -113,7 +113,7 @@ function aigPostFA27DepthOptions(state) {
 }
 
 function aigPostFA27DepthSelectedCount(state) {
-    console.log("aigPostFA27DepthCourses",state.aigPostFA27DepthCourses);
+    console.log("aigPostFA27DepthCourses",(state.aigPostFA27DepthCourses || []).length);
     return (state.aigPostFA27DepthCourses || []).length;
 }
 
