@@ -250,8 +250,11 @@ function subplanRows() {
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
       status: (state) => 
-        console.log(state.aigPostFA27DepthOptions);
-        countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED),
+        console.log(state.aigPostFA27DepthCourses);
+        return countStatus(
+          aigPostFA27DepthSelectedCount(state),
+          AI_DEPTH_COURSES_REQUIRED
+        ),
       credits: (state) => Math.min(state.aidepth, 6),
     },
   ];
