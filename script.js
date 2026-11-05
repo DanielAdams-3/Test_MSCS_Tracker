@@ -116,6 +116,7 @@ function aigPostFA27DepthSelectedCount(state) {
     console.log("aigPostFA27DepthCourses",state.aigPostFA27DepthCourses);
     return (state.aigPostFA27DepthCourses || []).length;
 }
+
 function projectsWaived(state) {
   return state.projects === PROJECTS_WAIVER;
 }
@@ -770,7 +771,7 @@ const tracks = [
       subplanCourses: [],
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
-      aigPostFA27DepthOptions: [],
+      aigPostFA27DepthCourses: [],
       aipd1: "",
       aipd2: "",
       aipd3: "",
@@ -992,7 +993,7 @@ const tracks = [
       subplanCourses: [],
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
-      aigPostFA27DepthOptions: [],
+      aigPostFA27DepthCourses: [],
       aipd1: "",
       aipd2: "",
       aipd3: "",
@@ -1224,7 +1225,7 @@ const tracks = [
         
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
-      aigPostFA27DepthOptions: [],
+      aigPostFA27DepthCourses: [],
       aipd1: "",
       aipd2: "",
       aipd3: "",
