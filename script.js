@@ -684,6 +684,8 @@ const tracks = [
           const aiDepth = Math.min(state.aidepth, 6);
           const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
           const base = `Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6` ;
+          console.log(aiDepth);
+          console.log(state.aidepth);
           return waived ? `${base} · Waiver electives ${extra}/6` : `${base} · Projects ${projects}/6`;
         }
       else {
@@ -2041,9 +2043,6 @@ function handleInputChange(event) {
   }
 
   renderTrack(track);
-    console.log(key);
-    console.log(track.state);
-    console.log(key in track.state);
 }
 
 /* ---------- Tabs -------------------------------------------------------- */
