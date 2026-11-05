@@ -681,7 +681,7 @@ const tracks = [
           const extra = waived ? Math.min(state.extraElectives, 6) : 0;
           const aiCore =  (state.aicore1 ? 3 : 0) + (state.aicore2 ? 3 : 0) + (state.aicore3 ? 3: 0);
           const aiProfDev =  (state.aipd1 ? 1 : 0) + (state.aipd2 ? 1 : 0) + (state.aipd3 ? 1: 0);
-          const aiDepth = Math.min(state.aidepth, 6);
+          const aiDepth = (state.aigPostFA27DepthCourses.length>=2 ? : (state.aigPostFA27DepthCourses.length===1 ? 3: 0));
           const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
           const base = `Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6` ;
           console.log(aiDepth);
