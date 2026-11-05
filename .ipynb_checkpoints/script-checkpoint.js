@@ -250,7 +250,7 @@ function subplanRows() {
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
       status: (state) => {
         (countStatus(aigPostFA27DepthSelectedCount(state),AI_DEPTH_COURSES_REQUIRED)),
-          console.log(state.aigPostFA27DepthCourses);
+          console.log(state.aigPostFA27DepthCourses),
       },
       credits: (state) => Math.min(state.aidepth, 6),
   ];
