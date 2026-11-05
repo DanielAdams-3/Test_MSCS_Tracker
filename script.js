@@ -113,7 +113,8 @@ function aigPostFA27DepthOptions(state) {
 }
 
 function aigPostFA27DepthSelectedCount(state) {
-  return (state.aigPostFA27DepthCourses || []).length;
+    console.log("aigPostFA27DepthCourses",state.aigPostFA27DepthCourses);
+    return (state.aigPostFA27DepthCourses || []).length;
 }
 
 function projectsWaived(state) {
@@ -250,7 +251,6 @@ function subplanRows() {
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
       status: (state) => countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED),
       credits: (state) => Math.min(state.aidepth, 6),
-
     },
   ];
 }
