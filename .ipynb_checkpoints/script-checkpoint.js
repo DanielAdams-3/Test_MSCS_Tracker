@@ -898,6 +898,7 @@ const tracks = [
       const projects = !waived && state.projects ? 6 : 0;
       const electives = Math.min(state.electives, 15);
       const extra = waived ? Math.min(state.extraElectives, 6) : 0;
+      const aiDepth = state.aidepth ? Math.min(state.aidepth, 6): 0;
       const base = `Breadth ${bins}/9 · Projects ${projects}/6 · Electives ${electives}/15`;
       return waived ? `${base} · Waiver electives ${extra}/6` : base;
     },
