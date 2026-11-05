@@ -113,7 +113,7 @@ function aigPostFA27DepthOptions(state) {
 }
 
 function aigPostFA27DepthSelectedCount(state) {
-  return state.aidepth;
+  return (state.aigPostFA27DepthOptions || []).length;
 }
 
 function projectsWaived(state) {
@@ -195,24 +195,24 @@ function subplanRows() {
     },    
     {
       key: "aipd1",
-      label: "AI Professional Development 1 (1 cr)",
-      requirement:"CSCI 5011 AI Professional Skills, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      label: "CSCI 5011 AI Professional Skills (1 cr)",
+      requirement:"Completion of CSCI 5011 with a grade of B or higher is required. A grade of C, C+, or B- cannot count.",
       input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
       credits: (state) => (state.aipd1 ? 1 : 0),
     },
     {
       key: "aipd2",
-      label: "AI Professional Development 2 (1 cr)",
-      requirement:"CSCI 5012 AI Toolkits, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      label: "CSCI 5012 AI Toolkits (1 cr)",
+      requirement:"Completion of CSCI 5012 with a grade of B or higher is required. A grade of C, C+, or B- cannot count.",
       input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
       credits: (state) => (state.aipd2 ? 1 : 0),
     },
     {
       key: "aipd3",
-      label: "AI Professional Development 3 (1 cr)",
-      requirement:"CSCI 5013 AI Ethics, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      label: "CSCI 5013 AI Ethics (1 cr)",
+      requirement:"Completion of 5013 AI Ethics with a grade of B or higher is required. A grade of C, C+, or B- cannot count.",
       input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
       credits: (state) => (state.aipd3 ? 1 : 0),
@@ -220,7 +220,7 @@ function subplanRows() {
     {
       key: "aicore1",
       label: "CSCI 5622 Machine Learning - AI Core #1 (3 cr)",
-      requirement:"CSCI 5622 Machine Learning, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      requirement:"Completion of CSCI 5622 with a grade of B or higher is required. A grade of C, C+, or B- cannot count.",
       input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
       credits: (state) => (state.aicore1 ? 3 : 0),
@@ -228,7 +228,7 @@ function subplanRows() {
     {
       key: "aicore2",
       label: "CSCI 5922 Neural Nets & Deep Learning - AI Core #2 (3 cr)",
-      requirement:"CSCI 5922 Neural Nets & Deep Learning, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      requirement:"Completion of CSCI 5922 with a grade of B or higher is required. A grade of C, C+, or B- cannot count.",
       input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
       credits: (state) => (state.aicore2 ? 3 : 0),
@@ -236,7 +236,7 @@ function subplanRows() {
     {
       key: "aicore3",
       label: "CSCI 5942 AI Enineering - AI Core #3 (3 cr)",
-      requirement:"CSCI 5942 AI Engineering, with a grade of B or higher, is required. A grade of C, C+, or B- cannot count.",
+      requirement:"Completion of CSCI 5942 with a grade of B or higher is required. A grade of C, C+, or B- cannot count.",
       input: { type: "checkbox" },
       visible: (hasSubplan && hasPostFA27AIG),
       credits: (state) => (state.aicore3 ? 3 : 0),
@@ -777,6 +777,7 @@ const tracks = [
       aicore1: "",
       aicore2: "",
       aicore3: "",
+      aidepth: 0,
     },
     plan: [
       {
@@ -998,6 +999,7 @@ const tracks = [
       aicore1: "",
       aicore2: "",
       aicore3: "",
+      aidepth: 0,
     },
     plan: [
       {
@@ -1229,6 +1231,7 @@ const tracks = [
       aicore1: "",
       aicore2: "",
       aicore3: "",
+      aidepth: 0,
     },
     plan: [
       {
