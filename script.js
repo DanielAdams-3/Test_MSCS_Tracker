@@ -116,7 +116,6 @@ function aigPostFA27DepthSelectedCount(state) {
     console.log("aigPostFA27DepthOptions",state.aigPostFA27DepthOptions);
     return (state.aigPostFA27DepthOptions || []).length;
 }
-
 function projectsWaived(state) {
   return state.projects === PROJECTS_WAIVER;
 }
@@ -249,12 +248,11 @@ function subplanRows() {
         "Select two AI Depth courses that you have finished with a B or higher. If you completed one of the AI DEpth courses for a Bin 1 or Bin 3 requirement, do NOT select it here. There is no double counting between Bin 1/Bin 3 and the AI Depth Requirement. A grade of C, C+, or B- cannot count. Two AI Depth courses are required to complete this part of the AI Specialization.",
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
-      status: {         console.log(state.aigPostFA27DepthCourses);
-          state =>
+      status: (state) => {
         (countStatus(aigPostFA27DepthSelectedCount(state),AI_DEPTH_COURSES_REQUIRED)),
+          console.log(state.aigPostFA27DepthCourses);
       },
       credits: (state) => Math.min(state.aidepth, 6),
-    },
   ];
 }
 
