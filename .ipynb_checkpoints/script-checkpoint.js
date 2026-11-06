@@ -200,7 +200,7 @@ function subplanRows() {
         type: "readout",
         valueFor: (state) =>
           `${Math.max(0, SUBPLAN_COURSES_REQUIRED - subplanSelectedCount(state))
-            } remaining`,
+            } remaining`,}
       status: (state) =>
         subplanSelectedCount(state) >= SUBPLAN_COURSES_REQUIRED ? "Completed" : "Incomplete",
     },    
