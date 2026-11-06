@@ -261,8 +261,8 @@ function subplanRows() {
         "Select two AI Depth courses that you have finished with a B or higher. A grade of C, C+, or B- cannot count. You may not select a course that you are already counting towards Bin 1 or Bin 3. Courses may count to EITHER a Bin requirement OR AI Depth, not both.",
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
-      status: (state) =>  (countStatus(aigPostFA27DepthSelectedCount(state),AI_DEPTH_COURSES_REQUIRED)),
-      credits: (state) => (countStatus(aigPostFA27DepthSelectedCount(state)) >= 2) ? 6 : (countStatus(aigPostFA27DepthSelectedCount(state)) >= 2) ? 3 : 0),
+      status: (state) =>  (countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED)),
+      credits: (state) => ((countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED)) >= 2) ? 6 : (countStatus(aigPostFA27DepthSelectedCount(state)) >= 2) ? 3 : 0),
     },
   ];
 }
