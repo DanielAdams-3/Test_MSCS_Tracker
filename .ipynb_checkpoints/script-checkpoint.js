@@ -113,7 +113,6 @@ function aigPostFA27DepthOptions(state) {
 }
 
 function aigPostFA27DepthSelectedCount(state) {
-    console.log(state.aidepth);
     return (state.aigPostFA27DepthCourses || []).length;
 }
 
@@ -250,7 +249,7 @@ function subplanRows() {
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
       status: (state) =>  (countStatus(aigPostFA27DepthSelectedCount(state),AI_DEPTH_COURSES_REQUIRED)),
-      credits: (state) => Math.min(state.aidepth, 6),
+      credits: (state) => (countStatus(aigPostFA27DepthSelectedCount(state)) >= 2) ? 6 : (countStatus(aigPostFA27DepthSelectedCount(state)) >= 2) ? 3 : 0),
     },
   ];
 }
