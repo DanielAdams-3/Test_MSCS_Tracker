@@ -195,11 +195,12 @@ function subplanRows() {
       label: "Subplan courses remaining",
       requirement: "Four subplan courses are required to have the specialization posted to your transcript.",
       visible: (hasSubplan && hasNOTPostFA27AIG),
-      input: {
+      input: 
+        {
         type: "readout",
         valueFor: (state) =>
-          `${Math.max(0, SUBPLAN_COURSES_REQUIRED - subplanSelectedCount(state))} remaining`,
-      },
+          `${Math.max(0, SUBPLAN_COURSES_REQUIRED - subplanSelectedCount(state))
+            } remaining`,
       status: (state) =>
         subplanSelectedCount(state) >= SUBPLAN_COURSES_REQUIRED ? "Completed" : "Incomplete",
     },    
