@@ -687,7 +687,7 @@ const tracks = [
 
           console.log(aiDepth);
           console.log(state.aidepth);
-          console.log(state.aigPostFA27.DepthCourses.length);
+          console.log(state.aigPostFA27DepthCourses.length);
           return waived ? `${base} · Waiver electives ${extra}/6` : `${base} · Projects ${projects}/6`;
         }
       else {
