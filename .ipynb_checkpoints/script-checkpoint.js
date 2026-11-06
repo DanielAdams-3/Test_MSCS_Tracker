@@ -114,18 +114,18 @@ function aigPostFA27DepthOptions(state) {
 
 function aigPostFA27DepthSelectedCount(state) {
     const depthlength = (state.aigPostFA27DepthCourses || []).length;
-    if (depthlength >=2){
+    console.log(state.aigPostFA27DepthCourses.length);
+    console.log(depthlength);
+    console.log(state.aidepth);
+    if (depthlength >=2) {
         state.aidepth = 6;
     }
-    else if (depthlength === 1){
+    else if (depthlength === 1) {
         state.aidepth=3;
     }
     else{
         state.aidepth=0;
     }
-    console.log(state.aigPostFA27DepthCourses.length);
-    console.log(depthlength);
-    console.log(state.aidepth);
     return depthlength;   
 }
 
