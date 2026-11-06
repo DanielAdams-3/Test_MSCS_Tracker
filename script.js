@@ -200,7 +200,8 @@ function subplanRows() {
         type: "readout",
         valueFor: (state) =>
           `${Math.max(0, SUBPLAN_COURSES_REQUIRED - subplanSelectedCount(state))
-            } remaining`,}
+            } remaining`,
+        },
       status: (state) =>
         subplanSelectedCount(state) >= SUBPLAN_COURSES_REQUIRED ? "Completed" : "Incomplete",
     },    
@@ -260,7 +261,7 @@ function subplanRows() {
       visible: (hasSubplan && hasPostFA27AIG),
       input: { type: "multiselect", optionsFor: aigPostFA27DepthOptions, goal: AI_DEPTH_COURSES_REQUIRED },
       status: (state) =>  (countStatus(aigPostFA27DepthSelectedCount(state), AI_DEPTH_COURSES_REQUIRED)),
-      credits: (state) => (aigPostFA27DepthSelectedCount(state) >= 2) ? 6 : (aigPostFA27DepthSelectedCount(state) >= 2) ? 3 : 0),
+      credits: (state) => ((aigPostFA27DepthSelectedCount(state) >= 2) ? 6 : (aigPostFA27DepthSelectedCount(state) >= 2) ? 3 : 0)),
     },
   ];
 }
