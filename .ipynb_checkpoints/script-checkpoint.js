@@ -114,17 +114,20 @@ function aigPostFA27DepthOptions(state) {
 
 function aigPostFA27DepthSelectedCount(state) {
     const depthlength = (state.aigPostFA27DepthCourses || []).length;
-    console.log(state.aigPostFA27DepthCourses.length);
-    console.log(depthlength);
-    console.log(state.aidepth);
     if (depthlength >=2) {
         state.aidepth = 6;
+        console.log("if branch executed");
+        console.log(state.aidepth);
     }
     else if (depthlength === 1) {
         state.aidepth=3;
+        console.log("else if branch executed");
+        console.log(state.aidepth);
     }
     else{
         state.aidepth=0;
+        console.log("else if branch executed");
+        console.log(state.aidepth);
     }
     return depthlength;   
 }
