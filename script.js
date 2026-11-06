@@ -113,7 +113,6 @@ function aigPostFA27DepthOptions(state) {
 }
 
 function aigPostFA27DepthSelectedCount(state) {
-    console.log("aigPostFA27DepthCourses",(state.aigPostFA27DepthCourses || []).length);
     return (state.aigPostFA27DepthCourses || []).length;
 }
 
@@ -903,7 +902,7 @@ const tracks = [
             const aiProfDev =  (state.aipd1 ? 1 : 0) + (state.aipd2 ? 1 : 0) + (state.aipd3 ? 1: 0);
             const aiDepth = Math.min(state.aidepth, 6);
             const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
-            const base = `Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6` ;
+            const base = `Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6`;
             return waived ? `${base} · Waiver electives ${extra}/6` : `${base} · Projects ${projects}/6`;
         }
         else {
@@ -1493,7 +1492,7 @@ function defaultStatus(row, state) {
     case "number":
       return countStatus(value, row.input.max);
     case "multiselect":
-      return countStatus((value || []).length, row.input.goal);
+      return ((countStatus((value || []).length) > row.input.goal) ? row.input.goal : countStatus((value || []).length)), row.input.goal;
     default:
       return value ? "Completed" : "Incomplete";
   }
