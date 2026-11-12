@@ -904,27 +904,22 @@ const tracks = [
       { title: "Subplan Requirements", visible: hasSubplan && hasPostFA27AIG, rows: subplanRows() },
     ],
     breakdown(state) {
+        const waived = bamAutoWaiver(state) || projectsWaived(state);
+        const projects = !waived && state.projects ? 6 : 0;
+        const electives = state.electives ? Math.min(state.electives, 15): 0;
+        const extra = waived ? Math.min(state.extraElectives, 6) : 0;
         if (hasSubplan && hasPostFA27AIG){
-            const waived = bamAutoWaiver(state) || projectsWaived(state);
-            const projects = !waived && state.projects ? 6 : 0;
-            const electives = state.electives ? Math.min(state.electives, 15): 0;
-            const extra = waived ? Math.min(state.extraElectives, 6) : 0;
             const aiCore =  (state.aicore1 ? 3 : 0) + (state.aicore2 ? 3 : 0) + (state.aicore3 ? 3: 0);
             const aiProfDev =  (state.aipd1 ? 1 : 0) + (state.aipd2 ? 1 : 0) + (state.aipd3 ? 1: 0);
             const aiDepth = Math.min(state.aidepth, 6);
             const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
             const base = `Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6`;
-            return waived ? `${base} · Waiver electives ${extra}/6` : `${base} · Projects ${projects}/6`;
         }
         else {
-            const waived = bamAutoWaiver(state) || projectsWaived(state);
-            const projects = !waived && state.projects ? 6 : 0;
-            const electives = state.electives ? Math.min(state.electives, 15): 0;
-            const extra = waived ? Math.min(state.extraElectives, 6) : 0;
             const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
             const base = `Breadth ${bins}/9 ·Electives ${electives}/15`;
-            return waived ? `${base} · Waiver electives ${extra}/6` : `${base}  · Projects ${projects}/6`;
         }
+        return waived ? `${base} · Waiver electives ${extra}/6` : `${base}  · Projects ${projects}/6`;
     },
     deadlines: (state) => [
       {
