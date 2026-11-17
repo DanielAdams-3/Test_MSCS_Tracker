@@ -697,7 +697,7 @@ const tracks = [
           const base = `Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6` ;
           return waived ? `${base} · Waiver electives ${extra}/6` : `${base} · Projects ${projects}/6`;
         }
-      else {
+      else if (!(hasNOTPostFA27AIG)) {
           const waived = bamAutoWaiver(state) || projectsWaived(state);
           const projects = !waived && state.projects ? 6 : 0;
           const electives = state.electives ? Math.min(state.electives, 15): 0;
