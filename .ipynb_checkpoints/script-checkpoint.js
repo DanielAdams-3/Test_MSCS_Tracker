@@ -698,13 +698,13 @@ const tracks = [
           return waived ? `${base} · Waiver electives ${extra}/6` : `${base} · Projects ${projects}/6`;
         }
       else if (!(hasNOTPostFA27AIG)) {
-          const waived = bamAutoWaiver(state) || projectsWaived(state);
-          const projects = !waived && state.projects ? 6 : 0;
-          const electives = state.electives ? Math.min(state.electives, 15): 0;
-          const extra = waived ? Math.min(state.extraElectives, 6) : 0;
-          const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
-          const base = `Breadth ${bins}/9 ·Electives ${electives}/15`;
-          return waived ? `${base} · Waiver electives ${extra}/6` : `${base}  · Projects ${projects}/6`;
+          const waived2 = bamAutoWaiver(state) || projectsWaived(state);
+          const projects2 = !waived2 && state.projects ? 6 : 0;
+          const electives2 = state.electives ? Math.min(state.electives, 15): 0;
+          const extra2 = waived2 ? Math.min(state.extraElectives, 6) : 0;
+          const bins2 = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
+          const base2 = `Breadth ${bins2}/9 ·Electives ${electives2}/15`;
+          return waived2 ? `${base2} · Waiver electives ${extra2}/6` : `${base2}  · Projects ${projects2}/6`;
       }
     },
     deadlines: (state) => [
