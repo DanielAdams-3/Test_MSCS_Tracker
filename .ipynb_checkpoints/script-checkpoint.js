@@ -1395,7 +1395,7 @@ const tracks = [
       { title: "Subplan Requirements", visible: hasPostFA27AIG, rows: subplanRows() },
     ],
     breakdown(state) {
-        if (hasSubplan && hasPostFA27AIG){
+        if (hasPostFA27AIG){
           const waived = bamAutoWaiver(state) || projectsWaived(state);
           const projects = !waived && state.projects ? 6 : 0;
           const electives = state.electives ? Math.min(state.electives, 15): 0;
