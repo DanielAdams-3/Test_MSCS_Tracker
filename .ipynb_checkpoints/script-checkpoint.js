@@ -2038,8 +2038,11 @@ function handleInputChange(event) {
     state[key] = target.value;
   }
 
-  // Changing the subplan invalidates any courses picked for the previous one.
-  if (key === "subplan") state.subplanCourses = [] ;
+  // Changing the subplan invalidates any courses picked for the previous one AND updates the breakdown
+  if (key === "subplan") {
+      state.subplanCourses = [];
+      track.breakdown(state);
+  }
 
   // BAM start terms are relative to the final undergraduate term.
   if (key === "finalUgTerm") {
