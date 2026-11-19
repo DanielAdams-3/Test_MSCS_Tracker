@@ -2047,6 +2047,7 @@ function handleInputChange(event) {
   if (key === "subplan") {
       state.subplanCourses = [];
       track.breakdown(state);
+      console.log("breakdown", track.breakdown(state));
   }
 
   // BAM start terms are relative to the final undergraduate term.
