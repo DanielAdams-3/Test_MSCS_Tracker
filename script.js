@@ -696,6 +696,8 @@ const tracks = [
         const baseAI = `Breadth ${binsAI}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6`;
         const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0); 
         const base = `Breadth ${bins}/9 ·Electives ${electives}/15`;
+        console.log
+        console.log("hasPostFA27AIG ", state.hasPostFA27AIG);
         if (state.hasPostFA27AIG === true){
             return ( waived ?
                 (`${baseAI} · Waiver electives ${extra}/6`)
