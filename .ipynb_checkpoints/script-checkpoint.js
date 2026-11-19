@@ -685,27 +685,16 @@ const tracks = [
       { title: "Subplan Requirements", visible: hasSubplan, rows: subplanRows() },
     ],
     breakdown(state) {
-        if (state.hasPostFA27AIG === true){
-          const waived = bamAutoWaiver(state) || projectsWaived(state);
-          const projects = !waived && state.projects ? 6 : 0;
-          const electives = state.electives ? Math.min(state.electives, 15): 0;
-          const extra = waived ? Math.min(state.extraElectives, 6) : 0;
-          const aiCore =  (state.aicore1 ? 3 : 0) + (state.aicore2 ? 3 : 0) + (state.aicore3 ? 3: 0);
-          const aiProfDev =  (state.aipd1 ? 1 : 0) + (state.aipd2 ? 1 : 0) + (state.aipd3 ? 1: 0);
-          const aiDepth = (state.aigPostFA27DepthCourses.length>= 2 ? 6 : (state.aigPostFA27DepthCourses.length===1 ? 3 : 0));
-          const bins = (state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0);
-          const base = `Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6` ;
-          return waived ? `${base} · Waiver electives ${extra}/6` : `${base} · Projects ${projects}/6`;
-        }
-      else if (state.hasNOTPostFA27AIG === true) {
-          const waived2 = bamAutoWaiver(state) || projectsWaived(state);
-          const projects2 = !waived2 && state.projects ? 6 : 0;
-          const electives2 = state.electives ? Math.min(state.electives, 15): 0;
-          const extra2 = waived2 ? Math.min(state.extraElectives, 6) : 0;
-          const bins2 = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0);
-          const base2 = `Breadth ${bins2}/9 ·Electives ${electives2}/15`;
-          return waived2 ? `${base2} · Waiver electives ${extra2}/6` : `${base2}  · Projects ${projects2}/6`;
-      }
+        const waived = bamAutoWaiver(state) || projectsWaived(state);
+        const projects = !waived && state.projects ? 6 : 0;
+        const electives = state.electives ? Math.min(state.electives, 15): 0;
+        const extra = waived ? Math.min(state.extraElectives, 6) : 0;
+        const aiCore =  (state.aicore1 ? 3 : 0) + (state.aicore2 ? 3 : 0) + (state.aicore3 ? 3: 0);
+        const aiProfDev =  (state.aipd1 ? 1 : 0) + (state.aipd2 ? 1 : 0) + (state.aipd3 ? 1: 0); 
+        const aiDepth = (state.aigPostFA27DepthCourses.length>= 2 ? 6 : (state.aigPostFA27DepthCourses.length===1 ? 3 : 0));
+        const bins = (state.hasPostFA27AIG ? ((state.bin1 ? 3 : 0) + (state.bin3 ? 3 : 0)) : ((state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0))); 
+        const base = (state.hasPostFA27AIG ? (`Breadth ${bins}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6`) : (`Breadth ${bins}/9 ·Electives ${electives}/15`);
+return waived ? `${base} · Waiver electives ${extra}/6` : `${base}  · Projects ${projects}/6`;
     },
     deadlines: (state) => [
       {
