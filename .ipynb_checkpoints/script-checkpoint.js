@@ -1403,8 +1403,7 @@ const tracks = [
           },
         ],
       },
-      { title: "Subplan Requirements", visible: hasSubplan, rows: subplanRows() },
-      { title: "Subplan Requirements", visible: hasPostFA27AIG, rows: subplanRows() },
+      { title: "Subplan Requirements", visible: hasSubplan || hasPostFA27AIG, rows: subplanRows() },
     ],
     breakdown(state) {
         if (hasPostFA27AIG === true){
