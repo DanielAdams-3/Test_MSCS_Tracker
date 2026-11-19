@@ -696,7 +696,21 @@ const tracks = [
         const baseAI = `Breadth ${binsAI}/6 · AI Core ${aiCore}/9 · AI Professional Readiness ${aiProfDev}/3 · AI Depth ${aiDepth}/6`;
         const bins = (state.bin1 ? 3 : 0) + (state.bin2 ? 3 : 0) + (state.bin3 ? 3 : 0); 
         const base = `Breadth ${bins}/9 ·Electives ${electives}/15`;
-        return (state.hasPostFA27AIG) ? ((waived ? `${baseAI} · Waiver electives ${extra}/6` : `${baseAI}  · Projects ${projects}/6`))) : (waived ? (`${base} · Waiver electives ${extra}/6`) : `${base}  · Projects ${projects}/6`);
+        return state.hasPostFA27AIG
+            ?
+            (waived
+                ?
+                (`${baseAI} · Waiver electives ${extra}/6`)
+                :
+                (`${baseAI}  · Projects ${projects}/6`)
+            )
+            :
+            (waived
+                ?
+                (`${base} · Waiver electives ${extra}/6`)
+                : 
+                (`${base}  · Projects ${projects}/6`)
+            );
      },
     deadlines: (state) => [
       {
