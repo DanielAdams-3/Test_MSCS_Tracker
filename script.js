@@ -907,7 +907,6 @@ const tracks = [
       },
       { title: "Subplan Requirements", visible: hasSubplan && hasPostFA27AIG, rows: subplanRows() },
     ],
-    breakdown(state) {
     breakdown (state){
         const waived = bamAutoWaiver(state) || projectsWaived(state);
         const projects = !waived && state.projects ? 6 : 0;
