@@ -162,6 +162,14 @@ function binRows() {
       credits: (state) => (state.bin2 ? 3 : 0),
     },
     {
+      key: "bin2",
+      label: "Breadth — BIN 2 (3 cr)",
+      visible: (hasPostFA27AIG) && (state.isNonCsPhd),
+      requirement: BIN_NOTE,
+      input: { type: "select", options: subplans.coreOptions, placeholder: "Select a BIN 2 course" },
+      credits: (state) => (state.bin2 ? 0 : 0),
+    },
+    {
       key: "bin3",
       label: "Breadth — BIN 3 (3 cr)",
       requirement: BIN_NOTE,
@@ -1256,7 +1264,7 @@ const tracks = [
       extraElectives: 0,
       subplanDeclared: false,
       subplanCourses: [],
-        
+      
       hasPostFA27AIG: false,
       hasNOTPostFA27AIG: true,
       aigPostFA27DepthCourses: [],
