@@ -164,10 +164,10 @@ function binRows() {
     {
       key: "bin2",
       label: "Breadth — BIN 2 (3 cr)",
-      visible: (hasPostFA27AIG) && (state.isNonCsPhd),
+      visible: (hasPostFA27AIG) && (isNonCsPhd),
       requirement: BIN_NOTE,
       input: { type: "select", options: subplans.coreOptions, placeholder: "Select a BIN 2 course" },
-      credits: (state) => (state.bin2 ? 0 : 0),
+      credits: (state) => (state.bin2 ? 3 : 0),
     },
     {
       key: "bin3",
